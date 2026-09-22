@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Max Li</title>
-<!-- <meta name="description" content="Max Li — Mechatronics Engineering, University of Waterloo."> -->
+<title>Max Li — Portfolio</title>
+<meta name="description" content="Max Li — Mechatronics Engineering, University of Waterloo.">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body data-page="home">
@@ -17,7 +17,7 @@
   <header class="site-header">
     <span class="mark">MAX LI</span>
     <nav class="site-nav">
-      <a href="projects.html" data-page="projects">Projects</a>
+      <a href="#projects" data-page="projects">Projects</a>
       <a href="experience.html" data-page="experience">Work Experience</a>
     </nav>
   </header>
@@ -27,22 +27,56 @@
 
       <section class="hero">
         <h1 class="name">Max Li</h1>
-        <p class="role">Mechatronics Engineering @ University of Waterloo</p>
+        <p class="role">Mechatronics Engineering Co-op Student — University of Waterloo</p>
         <p class="intro placeholder">
-          [lorem ipsum dolor sit amet consectetur adipiscing elit assumenda facilis incididunt fuga culpa pariatur voluptas deserunt quidem]
+          [ Write a short introduction here — a couple of sentences on what you
+          build, what you're studying, and what you're currently interested in. ]
         </p>
       </section>
 
       <section class="section-list">
 
-        <div class="section-block">
+        <div class="section-block" id="projects">
           <span class="label">Projects</span>
           <div>
             <h2>Projects</h2>
-            <p class="placeholder">
-              [lorem ipsum dolor sit amet consectetur adipiscing elit assumenda facilis incididunt fuga culpa pariatur voluptas deserunt quidem]
-            </p>
-            <a class="tech-link" href="projects.html">[ View projects ]</a>
+
+            <div class="home-projects">
+
+              <a class="home-project" href="projects/project-template.html">
+                <span class="num">01</span>
+                <div>
+                  <h3 class="placeholder">[ Project title ]</h3>
+                  <p class="tags">[ tags — e.g. C++, ROS2, SolidWorks ]</p>
+                  <p class="placeholder">[ One or two sentence description. ]</p>
+                </div>
+              </a>
+
+              <a class="home-project" href="projects/project-template.html">
+                <span class="num">02</span>
+                <div>
+                  <h3 class="placeholder">[ Project title ]</h3>
+                  <p class="tags">[ tags — e.g. Fusion 360, CNC, embedded ]</p>
+                  <p class="placeholder">[ One or two sentence description. ]</p>
+                </div>
+              </a>
+
+              <a class="home-project" href="projects/project-template.html">
+                <span class="num">03</span>
+                <div>
+                  <h3 class="placeholder">[ Project title ]</h3>
+                  <p class="tags">[ tags — e.g. React, Node, MongoDB ]</p>
+                  <p class="placeholder">[ One or two sentence description. ]</p>
+                </div>
+              </a>
+
+              <!--
+                Copy an <a class="home-project"> block above to add more.
+                Point each href at its own copy of projects/project-template.html
+                (e.g. projects/line-follower.html).
+              -->
+
+            </div>
           </div>
         </div>
 
@@ -51,7 +85,8 @@
           <div>
             <h2>Work Experience</h2>
             <p class="placeholder">
-              [lorem ipsum dolor sit amet consectetur adipiscing elit assumenda facilis incididunt fuga culpa pariatur voluptas deserunt quidem]
+              [ Briefly describe your work experience — internships, co-ops,
+              or teams you've worked with — one or two sentences is enough. ]
             </p>
             <a class="tech-link" href="experience.html">[ View work experience ]</a>
           </div>
@@ -67,6 +102,6 @@
     <span>Waterloo, ON</span>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

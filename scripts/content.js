@@ -23,9 +23,9 @@ fetch("./scripts/content.json").then(async (res) => {
       console.log("hi")
     });
 
-    json.gallery.forEach((item) => {
+    // json.gallery.forEach((item) => {
     
-    });
+    // });
     scrollReveal();
     modalListener();
   });

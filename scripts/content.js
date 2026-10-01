@@ -2,7 +2,7 @@ import { scrollReveal } from "./scroll.js";
 import { modalListener } from "./modals.js";
 let projectDiv = document.getElementById('home-projects');
 
-fetch("./scripts/content.json").then((res) => {
+fetch("./scripts/content.json").then(async (res) => {
   res.json().then((json) => {
     let projNum = 1;
     json.projects.forEach((project) => {
@@ -13,9 +13,9 @@ fetch("./scripts/content.json").then((res) => {
               <span class="num">01</span>
             </div>
             <div class="home-project-text">
-              <h3 class="placeholder">[ Project title ]</h3>
-              <p class="tags">[ tags — e.g. C++, ROS2, SolidWorks ]</p>
-              <p class="placeholder">[ One or two sentence description. ]</p>
+              <h3 class="placeholder">${project.title}</h3>
+              <p class="tags">[ ${project.tags.join(", ")} ]</p>
+              <p class="placeholder">${project.previewDesc}</p>
             </div>
           </button>
       `;

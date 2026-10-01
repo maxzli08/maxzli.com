@@ -1,11 +1,17 @@
 {
   "projects": [
     {
-      "name": "s"
-    },
-    {
-      "name": "hello"
+      "title": "Title",
+      "tags": [
+        "solidworks",
+        "c++"
+      ],
+      "previewDesc": "short desc",
+      "iconImg": "./"
     }
+  ],
+  "workExperience": [
+
   ],
   "gallery": [
     

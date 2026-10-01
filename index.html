@@ -7,93 +7,148 @@
 <meta name="description" content="Max Li — Mechatronics Engineering, University of Waterloo.">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body data-page="home">
+<body>
+  <div class="layout">
 
-  <span class="fiducial tl" aria-hidden="true"></span>
-  <span class="fiducial tr" aria-hidden="true"></span>
-  <span class="fiducial bl" aria-hidden="true"></span>
-  <span class="fiducial br" aria-hidden="true"></span>
+    <!-- ============================= SIDEBAR ============================= -->
+    <aside class="sidebar">
+      <div class="sidebar-inner">
 
-  <header class="site-header">
-    <span class="mark">MAX LI</span>
-    <nav class="site-nav">
-      <a href="#projects" data-page="projects">Projects</a>
-      <a href="experience.html" data-page="experience">Work Experience</a>
-    </nav>
-  </header>
+        <div class="sidebar-top">
+          <h1 class="name">Max Li</h1>
+          <p class="role">Mechatronics Engineering <br> <i>@ The University of Waterloo</i></p>
 
-  <main>
-    <div class="sheet">
+          <nav class="side-nav">
+            <a href="#projects" data-target="projects">Projects</a>
+            <a href="#experience" data-target="experience">Work Experience</a>
+            <a href="#gallery" data-target="gallery">Gallery</a>
+          </nav>
 
-      <section class="hero">
-        <h1 class="name">Max Li</h1>
-        <p class="role">Mechatronics Engineering Co-op Student — University of Waterloo</p>
-        <p class="intro placeholder">
-          bleh blehb leb habk asidhasdja sdklajd meow hi descriptgion :3
-        </p>
+          <p class="about placeholder">
+            [ A few sentences about who you are, what you build, and what
+            you're into right now. This sits permanently on screen, so keep
+            it tight. ]
+          </p>
+        </div>
+
+        <div class="sidebar-bottom">
+          <div class="contact-list">
+            <a class="tech-link" href="https://github.com/maxzli08">[ GitHub ]</a>
+            <a class="tech-link" href="https://www.linkedin.com/in/maxizli/">[ LinkedIn ]</a>
+            <a class="tech-link" href="#">[ Resume ]</a>
+            <a class="tech-link" href="mailto:maxi.zli640@gmail.com">[ maxi.zli640@gmail.com ]</a>
+          </div>
+          <p class="misc placeholder">Waterloo, ON</p>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- ============================= CONTENT ============================= -->
+    <main class="content">
+
+      <!-- ---------- Projects ---------- -->
+      <section id="projects" class="content-section">
+        <p class="section-eyebrow" data-reveal style="--i:0">Projects</p>
+        <h2 data-reveal style="--i:1">Cool things I've built</h2>
+
+        <div class="home-projects" id="home-projects">
+
+        </div>
       </section>
+      <div id = "project-modal">
 
-      <section class="section-list">
+      </div>
 
-        <div class="section-block" id="projects">
-          <span class="label">Projects</span>
-          <div>
-            <h2>Projects</h2>
+      <!-- ---------- Work Experience ---------- -->
+      <section id="experience" class="content-section">
+        <p class="section-eyebrow" data-reveal style="--i:0">Work Experience</p>
+        <h2 data-reveal style="--i:1">Where I've worked</h2>
 
-            <div class="home-projects">
+        <div class="timeline">
 
-              <a class="home-project" href="projects/project-template.html">
-                <span class="num">01</span>
-                <div>
-                  <h3 class="placeholder">ttirle</h3>
-                  <p class="tags">tags</p>
-                  <p class="placeholder">descccpriton</p>
-                </div>
-              </a>
-
-              <a class="home-project" href="projects/project-template.html">
-                <span class="num">02</span>
-                <div>
-                  <h3 class="placeholder">ttirle</h3>
-                  <p class="tags">tags</p>
-                  <p class="placeholder">descccpriton</p>
-                </div>
-              </a>
-
-              <a class="home-project" href="projects/project-template.html">
-                <span class="num">03</span>
-                <div>
-                  <h3 class="placeholder">ttirle</h3>
-                  <p class="tags">tags</p>
-                  <p class="placeholder">descccpriton</p>
-                </div>
-              </a>
-
+          <article class="timeline-entry" data-reveal style="--i:2">
+            <div class="when placeholder">[ Term / dates ]</div>
+            <div class="body">
+              <h3 class="placeholder">[ Role title ]</h3>
+              <p class="org placeholder">[ Company or team name ]</p>
+              <ul>
+                <li class="placeholder">[ What you did — a concrete responsibility or result. ]</li>
+                <li class="placeholder">[ Another responsibility or result. ]</li>
+                <li class="placeholder">[ Tools or technologies you used. ]</li>
+              </ul>
             </div>
-          </div>
-        </div>
+          </article>
 
-        <div class="section-block">
-          <span class="label">Work Experience</span>
-          <div>
-            <h2>Work Experience</h2>
-            <p class="placeholder">
-              [placeeeeeholder
-            </p>
-            <a class="tech-link" href="experience.html">[ View work experience ]</a>
-          </div>
-        </div>
+          <article class="timeline-entry" data-reveal style="--i:3">
+            <div class="when placeholder">[ Term / dates ]</div>
+            <div class="body">
+              <h3 class="placeholder">[ Role title ]</h3>
+              <p class="org placeholder">[ Company or team name ]</p>
+              <ul>
+                <li class="placeholder">[ What you did — a concrete responsibility or result. ]</li>
+                <li class="placeholder">[ Another responsibility or result. ]</li>
+                <li class="placeholder">[ Tools or technologies you used. ]</li>
+              </ul>
+            </div>
+          </article>
 
+          <!-- Copy a <article class="timeline-entry"> block above to add more. -->
+
+        </div>
       </section>
 
-    </div>
-  </main>
+      <!-- ---------- Gallery ---------- -->
+      <section id="gallery" class="content-section">
+        <p class="section-eyebrow" data-reveal style="--i:0">Gallery</p>
+        <h2 data-reveal style="--i:1">Builds &amp; photos</h2>
 
-  <footer class="site-footer">
-    <span>[ email / links ]</span>
-    <span>Waterloo, ON</span>
-  </footer>
+        <div class="gallery-grid">
+          <button class="gallery-item" type="button" data-caption="[ Caption ]" data-reveal style="--i:2">
+            <div class="image-frame">[ Image ]</div>
+          </button>
+          <button class="gallery-item" type="button" data-caption="[ Caption ]" data-reveal style="--i:3">
+            <div class="image-frame">[ Image ]</div>
+          </button>
+          <button class="gallery-item" type="button" data-caption="[ Caption ]" data-reveal style="--i:4">
+            <div class="image-frame">[ Image ]</div>
+          </button>
+          <button class="gallery-item" type="button" data-caption="[ Caption ]" data-reveal style="--i:5">
+            <div class="image-frame">[ Image ]</div>
+          </button>
+          <button class="gallery-item" type="button" data-caption="[ Caption ]" data-reveal style="--i:6">
+            <div class="image-frame">[ Image ]</div>
+          </button>
+          <button class="gallery-item" type="button" data-caption="[ Caption ]" data-reveal style="--i:7">
+            <div class="image-frame">[ Image ]</div>
+          </button>
+          <!-- Copy a <button class="gallery-item"> block above to add more. -->
+        </div>
+      </section>
 
-  <script src="js/script.js"></script>
+      <footer class="site-footer">
+        <span>Max Li</span>
+        <span>2026</span>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- ============================= MODAL ============================= -->
+  <dialog id="project-modal" class="project-modal">
+    <button class="modal-close" type="button">✕</button>
+    <div class="modal-content"></div>
+  </dialog>
+
+  <!-- ============================= LIGHTBOX ============================= -->
+  <dialog id="lightbox" class="lightbox">
+    <button class="modal-close" type="button">✕</button>
+    <button class="lightbox-nav prev" type="button">‹</button>
+    <div class="image-frame lightbox-image">[ Image ]</div>
+    <p class="lightbox-caption placeholder">[ Caption ]</p>
+    <button class="lightbox-nav next" type="button">›</button>
+  </dialog>
+
+  <script type="module"src="./scripts/content.js" ></script>
 </body>
 </html>

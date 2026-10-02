@@ -356,6 +356,30 @@ button { font-family: inherit; }
   .thumb .image-frame { width: 48px; aspect-ratio: 1/1; flex-shrink: 0; }
 }
 
+/* On big screens, run two project entries side by side instead of one
+   long single-column list. */
+@media (min-width: 1825px) {
+  .home-projects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+    row-gap: 0;
+  }
+
+  .home-project {
+    border-top: 1px solid var(--line);
+    padding: 24px 0;
+  }
+
+  /* First row (first two items) gets no top rule, matching the old
+     "first item has no divider" look from the single-column version. */
+  .home-project:first-child,
+  .home-project:nth-child(2) {
+    border-top: none;
+    padding-top: 0;
+  }
+}
+
 /* -------------------------------------------------------------------------
    Experience timeline
    ------------------------------------------------------------------------- */
@@ -522,7 +546,8 @@ button { font-family: inherit; }
   top: 0;
   right: 0;
   height: 100vh;
-  width: min(700px, 92vw);
+  /* width: min(700px, 92vw); */
+  width: 50vw;
   background: var(--bg);
   border-left: 1px solid var(--line);
   box-shadow: -24px 0 60px rgba(21, 23, 26, 0.14);

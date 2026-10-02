@@ -1,6 +1,5 @@
 // document.addEventListener('DOMContentLoaded', () => {
 export const scrollReveal = () => {
-  console.log("scroll.js loaded")
   /* ----------------------------------------------------------------------
      Scroll / load reveal — fires once per element, sidebar elements fire
      immediately since they're already in the viewport on load.

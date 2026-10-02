@@ -1,13 +1,55 @@
 {
   "projects": [
     {
-      "title": "Title",
-      "tags": [
-        "solidworks",
-        "c++"
+      "title": "VEX Robotics",
+      "metadata": [
+        ["Timeframe", "2022-2026"],
+        ["Role", "Team Captain, Lead Designer & Programmer"]
       ],
-      "previewDesc": "short desc",
-      "iconImg": "./"
+      "links": [
+        ["Repo", "https://github.com/username/vex-robotics"],
+        ["Demo", "https://example.com/vex-demo"],
+        ["Write-up", "https://example.com/vex-writeup"]
+      ],
+      "tags": [
+        "Fusion 360", "C++", "PID", "Odometrey"
+      ],
+      "previewDesc": "Built nine competition robots across four seasons, led a team of seven members, and directed my team to winning a total of 11 awards at the provincial level. Competed as Team 7614A.",
+      "images": {
+        "iconImg": "../projects/vexIcon.jpg"
+      }
+    },
+    {
+      "title": "4 DOF Humanoid Arm",
+      "metadata": [
+        ["Timeframe", "September 2026"]
+      ],
+      "links": [
+        ["Repo", "https://github.com/username/humanoid-arm"]
+      ],
+      "tags": [
+        "Fusion 360", "C++", "PID", "Odometrey"
+      ],
+      "previewDesc": "Built nine competition robots across four seasons, led a team of seven members, and directed my team to winning a total of 11 awards at the provincial level. Competed as Team 7614A.",
+      "images": {
+        "iconImg": "../projects/hum_armIcon.png"
+      }
+    },{
+      "title": "Pure Pursuit Path Planner",
+      "metadata": [
+        ["Timeframe", "April 2025"],
+        ["Role", "Team Captain, Lead Designer & Programmer"]
+      ],
+      "links": [
+        ["Repo", ""]
+      ],
+      "tags": [
+        "Fusion 360", "C++", "PID", "Odometrey"
+      ],
+      "previewDesc": "Built nine competition robots across four seasons, led a team of seven members, and directed my team to winning a total of 11 awards at the provincial level. Competed as Team 7614A.",
+      "images": {
+        "iconImg": "../projects/vexIcon.jpg"
+      }
     }
   ],
   "workExperience": [

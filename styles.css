@@ -217,7 +217,7 @@ button { font-family: inherit; }
 
 .content-section {
   /* max-width: 1040px; */
-  padding: clamp(56px, 9vh, 96px) 0 24px;
+  padding: clamp(30px, 7vh, 96px) 0 24px;
   border-bottom: 1px solid var(--line);
   scroll-margin-top: 28px;
 }
@@ -310,9 +310,9 @@ button { font-family: inherit; }
 
 .home-project {
   display: grid;
-  grid-template-columns: 72px 1fr;
+  grid-template-columns: 175px 1fr;
   gap: 20px;
-  padding: 24px 0;
+  padding: 15px 0;
   border-top: 1px solid var(--line);
   background: none;
   border-left: none;
@@ -327,12 +327,12 @@ button { font-family: inherit; }
 .home-project:first-child { border-top: none; padding-top: 0; }
 
 .thumb { display: flex; flex-direction: column; gap: 6px; }
-.thumb .image-frame { aspect-ratio: 1 / 1; font-size: 10px; padding: 6px; }
+.thumb .image-frame { aspect-ratio: 1 / 1; max-width: 100%; max-height: 100%; font: 10px; padding: 6px; }
 .thumb .num { font-family: var(--mono); font-size: 11px; color: var(--muted); text-align: center; transition: color 0.2s ease; }
 
 .home-project h3 {
   font-family: var(--display);
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-weight: 600;
   margin: 0 0 6px;
   transition: color 0.2s ease;
@@ -444,22 +444,6 @@ button { font-family: inherit; }
 /* -------------------------------------------------------------------------
    Project modal
    ------------------------------------------------------------------------- */
-.project-modal {
-  border: 1px solid var(--line);
-  background: var(--bg);
-  padding: 0;
-  width: min(760px, 90vw);
-  max-height: 86vh;
-  box-shadow: 0 24px 60px rgba(21, 23, 26, 0.18);
-}
-
-.project-modal::backdrop,
-.lightbox::backdrop {
-  background: rgba(21, 23, 26, 0.5);
-  backdrop-filter: blur(3px);
-}
-
-.project-modal[open] { animation: modal-in 0.3s cubic-bezier(0.16, 0.8, 0.3, 1); }
 
 @keyframes modal-in {
   from { opacity: 0; transform: translateY(12px) scale(0.98); }
@@ -469,7 +453,7 @@ button { font-family: inherit; }
 .modal-content {
   padding: 48px;
   overflow-y: auto;
-  max-height: 86vh;
+  max-height: 100%;
 }
 
 .modal-content .eyebrow { font-family: var(--mono); font-size: 13px; color: var(--muted); margin: 0 0 10px; }
@@ -477,7 +461,7 @@ button { font-family: inherit; }
 .modal-content h2 {
   font-family: var(--display);
   font-weight: 600;
-  font-size: clamp(1.7rem, 4vw, 2.3rem);
+  font-size: clamp(1.6rem, 3.4vw, 2.1rem);
   margin: 0 0 16px;
 }
 
@@ -516,6 +500,53 @@ button { font-family: inherit; }
   z-index: 2;
 }
 .modal-close:hover { border-color: var(--accent); color: var(--accent); }
+
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(21, 23, 26, 0.35);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  z-index: 65;
+}
+
+.drawer-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.project-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: min(700px, 92vw);
+  background: var(--bg);
+  border-left: 1px solid var(--line);
+  box-shadow: -24px 0 60px rgba(21, 23, 26, 0.14);
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 0.8, 0.3, 1);
+  overflow-y: auto;
+  visibility: hidden;
+  z-index: 70;
+}
+
+.project-drawer.open {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+@media (max-width: 640px) {
+  .project-drawer { width: 100vw; border-left: none; }
+  .modal-content { padding: 28px 20px; }
+}
+
+.lightbox::backdrop {
+  background: rgba(21, 23, 26, 0.5);
+  backdrop-filter: blur(3px);
+}
 
 /* -------------------------------------------------------------------------
    Lightbox
@@ -556,8 +587,6 @@ button { font-family: inherit; }
 .lightbox-nav:hover { border-color: var(--accent); color: var(--accent); }
 
 @media (max-width: 640px) {
-  .modal-content { padding: 28px 20px; }
-  .project-modal { width: 94vw; }
 
   .lightbox { width: 94vw; padding: 16px; }
   .lightbox-nav {

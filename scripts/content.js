@@ -1,6 +1,7 @@
 import { scrollReveal } from "./scroll.js";
 import { modalListener } from "./modals.js";
 let projectDiv = document.getElementById('home-projects');
+let modalContent = document.getElementById('modal-content');
 
 fetch("./scripts/content.json").then(async (res) => {
   res.json().then((json) => {
@@ -9,8 +10,8 @@ fetch("./scripts/content.json").then(async (res) => {
       projectDiv.innerHTML += `
           <button class="home-project" type="button" data-project="p${projNum}" data-reveal style="--i:${projNum + 1}">
             <div class="thumb">
-              <div class="image-frame">[ Image ]</div>
-              <span class="num">01</span>
+              <img class="image-frame" src="${project.images.iconImg}" alt="${project.title}">
+              <span class="num">0${projNum}</span>
             </div>
             <div class="home-project-text">
               <h3 class="placeholder">${project.title}</h3>
@@ -19,8 +20,36 @@ fetch("./scripts/content.json").then(async (res) => {
             </div>
           </button>
       `;
+      modalContent.innerHTML += `
+        <template class="project-detail" id="p${projNum}">
+          <p class="eyebrow placeholder">[ ${project.tags.join(", ")} ]</p>
+          <h2 class="placeholder">${project.title}</h2>
+          <div class="project-meta">
+            ${project.metadata.map((data) => `<span data-label="${data[0]}" class="placeholder">[ ${data[1]} ]</span>`).join('')}
+          </div>
+          <div class="project-links">
+            ${project.links.map((link) => `<a href="${link[1]}" target="_blank" class="tech-link">[ ${link[0]} ]</a>`).join('')}
+          </div>
+          <div class="image-frame hero-image">[ Hero image — recommended 1600×900 ]</div>
+          <section>
+            <h3>Overview</h3>
+            <p class="placeholder">[ What the project is and why you built it. ]</p>
+          </section>
+          <section>
+            <h3>How it works</h3>
+            <p class="placeholder">[ Technical approach — architecture, control loop, mechanical design. ]</p>
+            <div class="image-gallery">
+              <div class="image-frame">[ Image ]</div>
+              <div class="image-frame">[ Image ]</div>
+            </div>
+          </section>
+          <section>
+            <h3>Outcome</h3>
+            <p class="placeholder">[ Results, and what you'd do differently next time. ]</p>
+          </section>
+        </template>
+      `
       projNum++;
-      console.log("hi")
     });
 
     // json.gallery.forEach((item) => {

@@ -408,20 +408,7 @@ button { font-family: inherit; }
   font-size: 13px;
   color: var(--muted);
   padding-top: 4px;
-  text-align: right;
   position: relative;
-}
-
-.timeline-entry .when::after {
-  content: "";
-  position: absolute;
-  right: -25px;
-  top: 8px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--accent);
-  transform: translateX(50%);
 }
 
 .timeline-entry .body { padding-left: 24px; }

@@ -69,7 +69,31 @@
     }
   ],
   "workExperience": [
-
+    {
+      "role": "Humanoid Mechanical Team Member",
+      "organization": "WATonomous",
+      "timeframe": "Oct 2026-Present"
+    },
+    {
+      "role": "Events Lead & Technical Logistics Advisor",
+      "organization": "Minds in Motion STEM Inc.",
+      "timeframe": "May 2026-Present"
+    },
+    {
+      "role": "Software Engineering Intern",
+      "organization": "Bridgesystems.net",
+      "timeframe": "Feb 2026-Sept 2026"
+    },
+    {
+      "role": "Senior Coding Instructor & Robotics Coach",
+      "organization": "Code Ninjas",
+      "timeframe": "May 2025-Aug 2026"
+    },
+    {
+      "role": "V5RC Robotics Club President",
+      "organization": "Phoenix Robotics",
+      "timeframe": "Jun 2024 - May 2026"
+    }
   ],
   "gallery": [
     

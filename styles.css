@@ -398,8 +398,7 @@ button { font-family: inherit; }
 .timeline-entry {
   display: grid;
   grid-template-columns: 152px 1fr;
-  gap: 24px;
-  padding: 32px 0;
+  padding: 20px 0;
   position: relative;
 }
 

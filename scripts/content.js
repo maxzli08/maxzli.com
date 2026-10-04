@@ -1,6 +1,7 @@
 import { scrollReveal } from "./scroll.js";
 import { modalListener } from "./modals.js";
 let projectDiv = document.getElementById('home-projects');
+let workExperienceDiv = document.getElementById('work-experience-timeline');
 let modalContent = document.getElementById('modal-content');
 
 fetch("./scripts/content.json").then(async (res) => {
@@ -50,6 +51,19 @@ fetch("./scripts/content.json").then(async (res) => {
         </template>
       `
       projNum++;
+    });
+    let jobNum = 1;
+    json.workExperience.forEach((job) => {
+      workExperienceDiv.innerHTML += `
+        <article class="timeline-entry" data-reveal style="--i:${jobNum + 1}">
+          <div class="when placeholder">${job.timeframe}</div>
+          <div class="body">
+            <h3 class="placeholder">${job.role}</h3>
+            <p class="org placeholder">${job.organization}</p>
+          </div>
+        </article>
+      `;
+      jobNum++;
     });
 
     // json.gallery.forEach((item) => {

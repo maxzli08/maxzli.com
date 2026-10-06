@@ -1,5 +1,5 @@
 import { scrollReveal } from "./scroll.js";
-import { modalListener } from "./modals.js";
+import { modalListener, timelineListener } from "./modals.js"; // changed: added timelineListener import
 let projectDiv = document.getElementById('home-projects');
 let workExperienceDiv = document.getElementById('work-experience-timeline');
 let modalContent = document.getElementById('modal-content');
@@ -55,12 +55,25 @@ fetch("./scripts/content.json").then(async (res) => {
     });
     let jobNum = 1;
     json.workExperience.forEach((job) => {
+      const detailsId = `job-details-${jobNum}`; // new: unique id links the toggle button to its panel
       workExperienceDiv.innerHTML += `
         <article class="timeline-entry" data-reveal style="--i:${jobNum + 1}">
           <div class="when placeholder">${job.timeframe}</div>
-          <div class="body">
+          <button class="body timeline-toggle" type="button" aria-expanded="false" aria-controls="${detailsId}">
             <h3 class="placeholder">${job.role}</h3>
             <p class="org placeholder">${job.organization}</p>
+          </button>
+          <div class="timeline-details" id="${detailsId}">
+            <div class="timeline-details-inner">
+              <p class="placeholder">${job.description}</p>
+              ${job.images && job.images.length ? `
+              <div class="timeline-images">
+                ${job.images.map((src) => `<img class="image-frame" src="${src}" alt="${job.role}">`).join('')}
+              </div>` : `
+              <div class="timeline-images">
+                <div class="image-frame">[ Image ]</div>
+              </div>`}
+            </div>
           </div>
         </article>
       `;
@@ -72,5 +85,6 @@ fetch("./scripts/content.json").then(async (res) => {
     // });
     scrollReveal();
     modalListener();
+    timelineListener(); // new: activates the dropdown toggle after entries are rendered
   });
 })

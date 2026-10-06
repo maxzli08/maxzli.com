@@ -84,3 +84,25 @@ export const modalListener = () => {
 //     if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
 //   });
 }
+
+// new: wires up click-to-expand behaviour for each work-experience entry.
+// delete this whole exported function to revert.
+export const timelineListener = () => {
+  document.querySelectorAll('.timeline-toggle').forEach((btn) => {
+    const entry = btn.closest('.timeline-entry'); // new: grab these once up front instead of re-querying on every click
+    const details = entry.querySelector('.timeline-details'); // new
+
+    btn.addEventListener('click', () => {
+      const isExpanding = !entry.classList.contains('expanded'); // changed: compute this before toggling, since we need it to decide which direction to animate
+
+      if (isExpanding) {
+        details.style.maxHeight = details.scrollHeight + 'px'; // new: measure the content's real height and animate to that exact value instead of a guessed cap
+      } else {
+        details.style.maxHeight = '0px'; // new: animate back down to 0 — the browser transitions smoothly since it's going from one explicit pixel value to another
+      }
+
+      entry.classList.toggle('expanded', isExpanding); // changed: pass the boolean explicitly instead of relying on toggle()'s return value, since we already computed isExpanding above
+      btn.setAttribute('aria-expanded', isExpanding ? 'true' : 'false');
+    });
+  });
+}

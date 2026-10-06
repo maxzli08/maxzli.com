@@ -149,7 +149,6 @@ button { font-family: inherit; }
   content: "+ ";
   color: var(--muted);
   transition: all 0.2s ease;
-  /* transition:  */
 }
 
 .side-nav a:hover,
@@ -410,11 +409,51 @@ button { font-family: inherit; }
   position: relative;
 }
 
-.timeline-entry .body { padding-left: 24px; }
-.timeline-entry h3 { font-family: var(--display); font-size: 1.15rem; font-weight: 600; margin: 0 0 4px; }
+.timeline-entry .body {
+  padding-left: 24px;
+  /* new: .body is now a <button> element, so reset default button chrome */
+  background: none; /* new */
+  border: none; /* new */
+  text-align: left; /* new */
+  width: 100%; /* new */
+  cursor: pointer; /* new */
+  color: inherit; /* new */
+  font-family: inherit; /* new */
+}
+.timeline-entry h3 { font-family: var(--display); font-size: 1.15rem; font-weight: 600; margin: 0 0 4px; display: flex; align-items: center; gap: 10px; } /* changed: added display:flex + gap to sit the toggle-icon next to the title */
 .timeline-entry .org { font-family: var(--mono); font-size: 13px; color: var(--ink-soft); margin: 0 0 14px; }
 .timeline-entry ul { margin: 0; padding-left: 18px; color: var(--ink-soft); }
 .timeline-entry li { margin-bottom: 6px; max-width: 58ch; }
+
+/* new: hover feedback on the toggle button, matching the home-project hover pattern */
+.timeline-toggle:hover h3,
+.timeline-toggle:focus-visible h3 { color: var(--accent); } /* new */
+
+.timeline-details {
+  grid-column: 1 / -1; /* unchanged: span both timeline columns, full width */
+  overflow: hidden; /* fix: clips the content while collapsed (moved up from .timeline-details-inner) */
+  max-height: 0; /* fix: collapsed by default — replaces grid-template-rows: 0fr */
+  opacity: 0; /* fix: fade the text in/out alongside the height animation */
+  transition: max-height 0.45s cubic-bezier(0.16, 0.8, 0.3, 1), opacity 0.3s ease; /* fix: animates max-height instead of grid-template-rows */
+}
+
+.timeline-entry.expanded .timeline-details {
+  opacity: 1; /* fix */
+}
+
+.timeline-details-inner {
+  padding: 4px 0 20px 176px; /* unchanged — overflow: hidden moved up to .timeline-details above */
+}
+.timeline-details-inner p { margin: 0 0 16px; max-width: 58ch; color: var(--ink-soft); } /* new */
+
+.timeline-images {
+  display: grid; /* new */
+  grid-template-columns: repeat(3, 1fr); /* new */
+  gap: 12px; /* new */
+  max-width: 58ch; /* new */
+} /* new */
+
+.timeline-images .image-frame { aspect-ratio: 4 / 3; font-size: 11px; } /* new */
 
 @media (max-width: 860px) {
   .timeline::before { left: 6px; }
@@ -422,6 +461,8 @@ button { font-family: inherit; }
   .timeline-entry .when { text-align: left; }
   .timeline-entry .when::after { left: -1px; right: auto; top: 8px; }
   .timeline-entry .body { padding-left: 20px; border-left: 1px solid var(--line); }
+  .timeline-details-inner { padding: 4px 0 20px 20px; } /* new: match mobile's 20px body indent instead of the 176px desktop offset */
+  .timeline-images { grid-template-columns: repeat(2, 1fr); } /* new: fewer columns on narrow screens */
 }
 
 /* -------------------------------------------------------------------------

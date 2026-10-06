@@ -71,27 +71,37 @@
     {
       "role": "Humanoid Mechanical Team Member",
       "organization": "WATonomous",
-      "timeframe": "Oct 2026-Present"
+      "timeframe": "Oct 2026-Present",
+      "description": "yogurtiesx",
+      "images": []
     },
     {
       "role": "Events Lead & Technical Logistics Advisor",
       "organization": "Minds in Motion STEM Inc.",
-      "timeframe": "May 2026-Present"
+      "timeframe": "May 2026-Present",
+      "description": "",
+      "images": []
     },
     {
       "role": "Software Engineering Intern",
       "organization": "Bridgesystems.net",
-      "timeframe": "Feb 2026-Sept 2026"
+      "timeframe": "Feb 2026-Sept 2026",
+      "description": "",
+      "images": []
     },
     {
       "role": "Senior Coding Instructor & Robotics Coach",
       "organization": "Code Ninjas",
-      "timeframe": "May 2025-Aug 2026"
+      "timeframe": "May 2025-Aug 2026",
+      "description": "",
+      "images": []
     },
     {
       "role": "V5RC Robotics Club President",
       "organization": "Phoenix Robotics",
-      "timeframe": "Jun 2024 - May 2026"
+      "timeframe": "Jun 2024 - May 2026",
+      "description": "",
+      "images": []
     }
   ],
   "gallery": [

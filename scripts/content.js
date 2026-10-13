@@ -31,8 +31,10 @@ fetch("./scripts/content.json").then(async (res) => {
           <div class="project-links">
             ${project.links.map((link) => `<a href="${link[1]}" target="_blank" class="tech-link">[ ${link[0]} ]</a>`).join('')}
           </div>
-          <img src="${project.images.heroImg}" alt="${project.title}" class="image-frame hero-image">
-          </div>
+           <figure class="hero-figure">
+            <img src="${project.images.heroImg}" alt="${project.title}" class="image-frame hero-image">
+            <figcaption class="placeholder">${project.images.heroCaption}</figcaption>
+          </figure>
           <section>
             <h3>Overview</h3>
             <p class="placeholder">[ What the project is and why you built it. ]</p>

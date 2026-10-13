@@ -7,17 +7,19 @@
         ["", "Team Captain, Lead Designer & Programmer"]
       ],
       "links": [
-        ["Repo", "https://github.com/username/vex-robotics"],
-        ["Demo", "https://example.com/vex-demo"],
-        ["Write-up", "https://example.com/vex-writeup"]
+        ["2024 Repo", "https://github.com/username/vex-robotics"],
+        ["2025 Repo", "https://github.com/username/vex-robotics"],
+        ["2026 Repo", "https://github.com/username/vex-robotics"]
       ],
       "tags": [
         "Fusion 360", "C++", "PID", "Odometrey"
       ],
       "previewDesc": "Built nine competition robots across four seasons, led a team of seven members, and directed my team to winning a total of 11 awards at the provincial level. Competed as Team 7614A.",
+      "overview": "",
       "images": {
         "iconImg": "../projects/vexIcon.jpg",
-        "heroImg": "../projects/vexHero.jpg"
+        "heroImg": "../projects/vexHero.jpg",
+        "heroCaption": "My team at the 2025 Waterloo VEX Robotics Competition, where we won the Think Award and placed 2nd overall."
       }
     },
     {

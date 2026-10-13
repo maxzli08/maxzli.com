@@ -1,8 +1,43 @@
 import { scrollReveal } from "./scroll.js";
-import { modalListener, timelineListener } from "./modals.js"; // changed: added timelineListener import
+import { modalListener, timelineListener } from "./modals.js";
 let projectDiv = document.getElementById('home-projects');
 let workExperienceDiv = document.getElementById('work-experience-timeline');
 let modalContent = document.getElementById('modal-content');
+
+// new: turns one block from a project's "sections" array in content.json into HTML.
+// block types: "text" | "image" | "images" (a row) | "list"
+const renderBlock = (block) => {
+  switch (block.type) {
+    case "text":
+      return `<p class="placeholder">${block.text}</p>`;
+    case "list":
+      return `<ul class="block-list">${block.items.map((item) => `<li>${item}</li>`).join('')}</ul>`;
+    case "image":
+      return `
+        <figure class="block-figure ${block.size || 'full'}">
+          <img class="image-frame" src="${block.src}" alt="${block.alt || block.caption || ''}" style="${block.ratio ? `aspect-ratio:${block.ratio}` : ''}">
+          ${block.caption ? `<figcaption>${block.caption}</figcaption>` : ''}
+        </figure>`;
+    case "images":
+      return `
+        <div class="block-images" style="--cols:${block.columns || block.items.length}">
+          ${block.items.map((img) => `
+            <figure class="block-figure">
+              <img class="image-frame" src="${img.src}" alt="${img.alt || img.caption || ''}" style="${block.ratio ? `aspect-ratio:${block.ratio}` : ''}">
+              ${img.caption ? `<figcaption>${img.caption}</figcaption>` : ''}
+            </figure>`).join('')}
+        </div>`;
+    default:
+      return '';
+  }
+};
+
+// new: one <section> per entry in the project's "sections" array
+const renderSections = (sections = []) => sections.map((section) => `
+  <section>
+    ${section.heading ? `<h3>${section.heading}</h3>` : ''}
+    ${(section.blocks || []).map(renderBlock).join('')}
+  </section>`).join('');
 
 fetch("./scripts/content.json").then(async (res) => {
   res.json().then((json) => {
@@ -31,33 +66,21 @@ fetch("./scripts/content.json").then(async (res) => {
           <div class="project-links">
             ${project.links.map((link) => `<a href="${link[1]}" target="_blank" class="tech-link">[ ${link[0]} ]</a>`).join('')}
           </div>
-           <figure class="hero-figure">
+          ${project.images.heroImg ? `
+          <figure class="hero-figure">
             <img src="${project.images.heroImg}" alt="${project.title}" class="image-frame hero-image">
-            <figcaption class="placeholder">${project.images.heroCaption}</figcaption>
-          </figure>
-          <section>
-            <h3>Overview</h3>
-            <p class="placeholder">[ What the project is and why you built it. ]</p>
-          </section>
-          <section>
-            <h3>How it works</h3>
-            <p class="placeholder">[ Technical approach — architecture, control loop, mechanical design. ]</p>
-            <div class="image-gallery">
-              <div class="image-frame">[ Image ]</div>
-              <div class="image-frame">[ Image ]</div>
-            </div>
-          </section>
-          <section>
-            <h3>Outcome</h3>
-            <p class="placeholder">[ Results, and what you'd do differently next time. ]</p>
-          </section>
+            ${project.images.heroCaption ? `<figcaption class="placeholder">${project.images.heroCaption}</figcaption>` : ''}
+          </figure>` : ''}
+          ${renderSections(project.sections)}
         </template>
       `
       projNum++;
     });
+
+
     let jobNum = 1;
     json.workExperience.forEach((job) => {
-      const detailsId = `job-details-${jobNum}`; // new: unique id links the toggle button to its panel
+      const detailsId = `job-details-${jobNum}`;
       workExperienceDiv.innerHTML += `
         <article class="timeline-entry" data-reveal style="--i:${jobNum + 1}">
           <div class="when placeholder">${job.timeframe}</div>
@@ -87,6 +110,6 @@ fetch("./scripts/content.json").then(async (res) => {
     // });
     scrollReveal();
     modalListener();
-    timelineListener(); // new: activates the dropdown toggle after entries are rendered
+    timelineListener();
   });
 })

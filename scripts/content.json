@@ -11,6 +11,36 @@
         ["2025 Repo", "https://github.com/username/vex-robotics"],
         ["2026 Repo", "https://github.com/username/vex-robotics"]
       ],
+      "sections": [
+        {
+          "heading": "Introduction",
+          "blocks": [
+            { "type": "text", "text": "I was the team captain, design, and programming lead for team 7614A, representing Newmarket High School. I was responsible for end-to-end development and design of the robot. We competed in four seasons of the VEX V5 Robotics Competition, achieving accalades on the regional and provincial scale. Some of my favorite high school memories are from robotics, and I will never forget the experiences or lessons it taught me." },
+            { "type": "images", "columns": 2, "ratio": "4/3", "items": [
+              { "src": "../projects/vex1.jpg", "caption": "2025 robot, CAD render", "size": "half" },
+              { "src": "../projects/vex1.jpg", "caption": "2025 robot, CAD render", "size": "half" }
+            ]}
+          ]
+        },
+        {
+          "heading": "Design Process",
+          "blocks": [
+            { "type": "text", "text": "Prototyped each subsystem in Fusion 360 before cutting metal." },
+            { "type": "images", "columns": 3, "ratio": "4/3", "items": [
+              { "src": "../projects/a.jpg", "caption": "Intake" },
+              { "src": "../projects/b.jpg", "caption": "Drivetrain" },
+              { "src": "../projects/c.jpg" }
+            ]},
+            { "type": "list", "items": ["PID tuned per subsystem", "Odometry for autonomous routines"] }
+          ]
+        },
+        {
+          "heading": "Achievements",
+          "blocks": [
+            { "type": "list", "items": ["Design award at 2025 Caution Tape Halloween Qualifier, awarded to the best-designed robot and the most professional approach to the engineering design process. <b>(top 1.4% in the province)</b>", "Excellence award at 2025 Ontario VEX V5 Robotics Competition School Board Invitational, awarded to the highest-performing team at the event. <b>(top 5% among public schools in the province)</b>"] }
+          ]
+        }
+      ],
       "tags": [
         "Fusion 360", "C++", "PID", "Odometrey"
       ],

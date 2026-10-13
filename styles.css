@@ -169,6 +169,34 @@ button { font-family: inherit; }
   flex-direction: column;
   gap: 8px;
 }
+.contact-list .tech-link {
+  display: flex; /* new: lets the revealed text sit beside the label */
+  align-items: baseline; /* new */
+  width: fit-content; /* new: keeps the hover area to the link itself, not the full column width */
+  max-width: 100%; /* new: never wider than the sidebar/dropdown */
+  white-space: nowrap; /* new */
+}
+
+.contact-list .tech-link[data-link]::after {
+  content: attr(data-link); /* new: pulls the reveal text from the data-link attribute */
+  display: block; /* new */
+  min-width: 0; /* new: lets it shrink + ellipsize when space is tight */
+  max-width: 0; /* new: collapsed by default */
+  margin-left: 0; /* new */
+  overflow: hidden; /* new */
+  text-overflow: ellipsis; /* new */
+  opacity: 0; /* new */
+  font-size: 12px; /* new */
+  color: var(--ink-soft); /* new */
+  transition: max-width 0.45s cubic-bezier(0.16, 0.8, 0.3, 1), margin-left 0.45s cubic-bezier(0.16, 0.8, 0.3, 1), opacity 0.3s ease; /* new: same easing curve as the rest of the site */
+}
+
+.contact-list .tech-link[data-link]:hover::after,
+.contact-list .tech-link[data-link]:focus-visible::after {
+  max-width: 26ch; /* new: expands to fit the longest link (~23 characters) */
+  margin-left: 10px; /* new */
+  opacity: 1; /* new */
+}
 
 .misc {
   font-family: var(--mono);

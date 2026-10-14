@@ -1,3 +1,52 @@
+// new: table of contents for project modals ---------------------------------
+const TOC_MIN_HEADINGS = 3; // new: modals with fewer headed sections than this skip the TOC
+
+// new: builds a small "Jump to" row from the modal's section headings and
+// inserts it under the project links. Does nothing when the TOC is turned off.
+const buildToc = (container, enabled) => {
+  if (!enabled) return;
+  const sections = [...container.querySelectorAll('section')].filter((s) => s.querySelector('h3'));
+  if (sections.length < TOC_MIN_HEADINGS) return;
+
+  const nav = document.createElement('nav');
+  nav.className = 'modal-toc';
+  nav.setAttribute('aria-label', 'Sections in this project');
+
+  const label = document.createElement('span');
+  label.className = 'modal-toc-label';
+  label.textContent = 'Jump to';
+  nav.appendChild(label);
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const list = document.createElement('div'); // changed: links now live in their own column so wrapped lines indent under the first link
+  list.className = 'modal-toc-links';
+  sections.forEach((section, i) => {
+    const item = document.createElement('span'); // new: link + its trailing separator travel together
+    item.className = 'modal-toc-item';
+
+    const link = document.createElement('a');
+    link.href = '#';
+    link.textContent = section.querySelector('h3').textContent;
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      section.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+    });
+    item.appendChild(link);
+
+    if (i < sections.length - 1) { // new: no separator after the last entry
+      const sep = document.createElement('span');
+      sep.className = 'modal-toc-sep';
+      sep.setAttribute('aria-hidden', 'true');
+      sep.textContent = '/';
+      item.appendChild(sep);
+    }
+    list.appendChild(item);
+  });
+  nav.appendChild(list); // changed: append the container instead of each link
+
+  const anchor = container.querySelector('.project-links') || container.querySelector('.project-meta');
+  if (anchor) anchor.after(nav); else container.prepend(nav);
+};
 export const modalListener = () => {
   const projectDrawer = document.getElementById('project-drawer');
   const drawerBackdrop = document.getElementById('drawer-backdrop');
@@ -29,7 +78,9 @@ export const modalListener = () => {
 
       drawerContent.innerHTML = '';
       drawerContent.appendChild(template.content.cloneNode(true));
-
+      drawerContent.scrollTop = 0; // new: always open a project from the top, not wherever the last one was scrolled to
+      projectDrawer.scrollTop = 0; // new
+      buildToc(drawerContent, template.dataset.toc !== 'false'); // new: add the table of contents unless it's turned off
       lastFocusedTrigger = btn;
       openDrawer();
     });

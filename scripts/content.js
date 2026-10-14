@@ -56,8 +56,9 @@ fetch("./scripts/content.json").then(async (res) => {
             </div>
           </button>
       `;
+      const tocEnabled = project.toc ?? json.settings?.showToc ?? true; // new: per-project "toc" wins, then site-wide settings.showToc, then on
       modalContent.innerHTML += `
-        <template class="project-detail" id="p${projNum}">
+        <template class="project-detail" id="p${projNum}" data-toc="${tocEnabled}">
           <p class="eyebrow placeholder">[ ${project.tags.join(", ")} ]</p>
           <h2 class="placeholder">${project.title}</h2>
           <div class="project-meta">

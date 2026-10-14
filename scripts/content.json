@@ -1,4 +1,7 @@
 {
+  "settings": {
+    "showToc": true
+  },
   "projects": [
     {
       "title": "VEX Robotics",
@@ -23,21 +26,36 @@
           ]
         },
         {
-          "heading": "Design Process",
-          "blocks": [
-            { "type": "text", "text": "Prototyped each subsystem in Fusion 360 before cutting metal." },
-            { "type": "images", "columns": 3, "ratio": "4/3", "items": [
-              { "src": "../projects/a.jpg", "caption": "Intake" },
-              { "src": "../projects/b.jpg", "caption": "Drivetrain" },
-              { "src": "../projects/c.jpg" }
-            ]},
-            { "type": "list", "items": ["PID tuned per subsystem", "Odometry for autonomous routines"] }
-          ]
-        },
-        {
           "heading": "Achievements",
           "blocks": [
             { "type": "list", "items": ["Design award at 2025 Caution Tape Halloween Qualifier, awarded to the best-designed robot and the most professional approach to the engineering design process. <b>(top 1.4% in the province)</b>", "Excellence award at 2025 Ontario VEX V5 Robotics Competition School Board Invitational, awarded to the highest-performing team at the event. <b>(top 5% among public schools in the province)</b>"] }
+          ]
+        },
+        {
+          "heading": "Engineering Design Process",
+          "blocks": [
+            { "type": "text", "text": "Our team implemented a seven step engineering design process. We applied this process to multiple design cycles per season, resulting in robots iterations that quantifiably improved as the season progressed. I led the documentation of our design cycles in <i><a href='https://heyzine.com/flip-book/08ea3cacf7.html' target='_blank'>engineering notebooks</a></i>, which led us to winning numerous judged awards." }
+          ]
+        },
+        {
+          "heading": "3D Design & CAD",
+          "blocks": [
+            { "type": "text", "text": "I led the usage of <b>Fusion 360</b> to design entire robots and prototypes before assembly, ensuring that all geometries and assemblies would work well together. I led the use of CNC milling on custom plastic pieces designed in CAD. We used DFM and DFA as foundational design philosophies in order to streamline the building process." },
+            { "type": "images", "columns": 2, "ratio": "4/3", "items": [
+              { "src": "../projects/vex1.jpg", "caption": "2025 robot, CAD render", "size": "half" },
+              { "src": "../projects/vex1.jpg", "caption": "2025 robot, CAD render", "size": "half" }
+            ]}
+          ]
+        },
+        {
+          "heading": "Programming & Autonomous Control",
+          "blocks": [
+            { "type": "text", "text": "Using <b>PID loops</b> and <b>field-wide global odometry </b>, I was able to achieve consistent and efficient autonomous movement from robots. A custom, in-house library increased efficiency while programming and tuning, allowing for more time spent on refining the mechanical aspects of the robot." },
+            { "type": "images", "columns": 3, "ratio": "4/3", "items": [
+              { "src": "../projects/vex1.jpg", "caption": "2025 robot, CAD render", "size": "half" },
+              { "src": "../projects/vex1.jpg", "caption": "2025 robot, CAD render", "size": "half" },
+              { "src": "../projects/vex1.jpg", "caption": "2025 robot, CAD render", "size": "half" }
+            ]}
           ]
         }
       ],

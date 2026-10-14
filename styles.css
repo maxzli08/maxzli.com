@@ -100,6 +100,14 @@ button { font-family: inherit; }
   overflow-y: auto;
   z-index: 10;
 }
+.sidebar::-webkit-scrollbar { width: 6px; } /* new */
+.sidebar::-webkit-scrollbar-track { background: transparent; } /* new */
+.sidebar::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; } /* new: faint thumb */
+.sidebar:hover::-webkit-scrollbar-thumb { background: var(--line-strong); } /* new: slightly firmer while hovering the sidebar */
+@supports not selector(::-webkit-scrollbar) { /* new: Firefox */
+  .sidebar { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+  .sidebar:hover { scrollbar-color: var(--line-strong) transparent; }
+}
 
 .sidebar-inner {
   display: flex;
@@ -556,7 +564,37 @@ button { font-family: inherit; }
 .project-meta span::before { content: attr(data-label); color: var(--muted); margin-right: 6px; }
 
 .project-links { display: flex; gap: 22px; margin-bottom: 8px; }
-
+/* new: table of contents row in project modals — small, muted, no box.
+   Two columns (label | links) so wrapped lines hang under the first link
+   instead of going back under "Jump to". */
+.modal-toc {
+  display: grid;
+  grid-template-columns: auto 1fr; /* changed: label column + links column */
+  column-gap: 16px; /* changed: this is the indent for wrapped lines */
+  align-items: baseline;
+  margin: 14px 0 0;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+.modal-toc-label { color: var(--muted); }
+.modal-toc-links { /* new */
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 4px;
+  min-width: 0;
+}
+.modal-toc-sep { /* new: the "/" between entries */
+  margin: 0 12px;
+  color: var(--muted);
+}
+.modal-toc a {
+  color: var(--ink-soft);
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.modal-toc a:hover,
+.modal-toc a:focus-visible { color: var(--accent); border-bottom-color: var(--accent); }
 .hero-figure {
   margin: 32px 0; /* moved here from the image itself */
   display: flex;

@@ -1,13 +1,12 @@
 {
   "settings": {
-    "showToc": true
+    "showToc": true,
+    "listVisible": 3
   },
   "projects": [
     {
       "title": "VEX Robotics",
-      "metadata": [
-        ["", "2022-2026"],
-        ["", "Team Captain, Lead Designer & Programmer"]
+      "metadata": ["2022-2026","Team Captain, Lead Designer & Programmer"
       ],
       "links": [
         ["2024 Repo", "https://github.com/username/vex-robotics"],
@@ -18,39 +17,50 @@
         {
           "heading": "Introduction",
           "blocks": [
-            { "type": "text", "text": "I was the team captain, design, and programming lead for team 7614A, representing Newmarket High School. I was responsible for end-to-end development and design of the robot. We competed in four seasons of the VEX V5 Robotics Competition, achieving accalades on the regional and provincial scale. Some of my favorite high school memories are from robotics, and I will never forget the experiences or lessons it taught me." },
-            { "type": "images", "columns": 2, "ratio": "4/3", "items": [
-              { "src": "../projects/vex1.jpg", "caption": "2025 robot, CAD render", "size": "half" },
-              { "src": "../projects/vex1.jpg", "caption": "2025 robot, CAD render", "size": "half" }
+            { "type": "text", "text": "I was the team captain, design, and programming lead for team 7614A, representing Newmarket High School. I was responsible for end-to-end development and design of the robot. We competed in four seasons of the VEX V5 Robotics Competition, achieving accalades on the regional and provincial scale." },
+            { "type": "images", "columns": 2, "ratio": "16/9", "items": [
+              { "src": "../projects/vex26trophyspread.png ", "caption": "2026 Provincials Robot and the season's trophies", "size": "half" },
+              { "src": "../projects/vex25trophyspread.jpg", "caption": "2025 Provincials Robot and the season's trophies", "size": "half" }
             ]}
           ]
         },
         {
           "heading": "Achievements",
           "blocks": [
-            { "type": "list", "items": ["Design award at 2025 Caution Tape Halloween Qualifier, awarded to the best-designed robot and the most professional approach to the engineering design process. <b>(top 1.4% in the province)</b>", "Excellence award at 2025 Ontario VEX V5 Robotics Competition School Board Invitational, awarded to the highest-performing team at the event. <b>(top 5% among public schools in the province)</b>"] }
+            { "type": "list", "collapsible": true, "visible": 2, "items": ["Design award at 2025 Caution Tape Halloween Qualifier, awarded to the best-designed robot and the most professional approach to the engineering design process. <b>(Top 1.4% provincially)</b>", "Excellence award at 2025 Ontario VEX V5 Robotics Competition School Board Invitational, awarded to the highest-performing team at the event. <b>(Top 5% among public schools provincially)</b>", "Quarterfinalists at 2026 VEX Ontario Provincial Championship", "Design award at 2026 Caution Tape Lunar New Year Qualifier", "Design award and tournament finalists at 2025 Toronto VEX Qualifier", "Innovate award at 2025 Caledon Qualifier", "Think award and tournament finalists at 2025 Waterloo VEX Qualifier", "Innovate award at 2024 Toronto VEX Qualifier", "Design award at 2025 No Way Snow Day Qualifier"] }
           ]
         },
         {
           "heading": "Engineering Design Process",
           "blocks": [
-            { "type": "text", "text": "Our team implemented a seven step engineering design process. We applied this process to multiple design cycles per season, resulting in robots iterations that quantifiably improved as the season progressed. I led the documentation of our design cycles in <i><a href='https://heyzine.com/flip-book/08ea3cacf7.html' target='_blank'>engineering notebooks</a></i>, which led us to winning numerous judged awards." }
+            { "type": "text", "text": "Our team implemented a seven step engineering design process. We applied this process to multiple design cycles per season, resulting in robots iterations that quantifiably improved as the season progressed. I led the documentation of our design cycles in <i><a href='https://heyzine.com/flip-book/08ea3cacf7.html' target='_blank' class='tech-link'>engineering notebooks</a></i>, which led us to winning numerous judged awards." }
           ]
         },
         {
           "heading": "3D Design & CAD",
           "blocks": [
             { "type": "text", "text": "I led the usage of <b>Fusion 360</b> to design entire robots and prototypes before assembly, ensuring that all geometries and assemblies would work well together. I led the use of CNC milling on custom plastic pieces designed in CAD. We used DFM and DFA as foundational design philosophies in order to streamline the building process." },
-            { "type": "images", "columns": 2, "ratio": "4/3", "items": [
-              { "src": "../projects/vex1.jpg", "caption": "2025 robot, CAD render", "size": "half" },
-              { "src": "../projects/vex1.jpg", "caption": "2025 robot, CAD render", "size": "half" }
+            { "type": "images", "columns": 2, "ratio": "3/4", "items": [
+              { "src": "../projects/vex25cad1.png", "caption": "2025 Early season robot render", "size": "half" },
+              { "src": "../projects/vex25cadreal.jpg", "caption": "2025 robot, CAD render", "size": "half" }
             ]}
           ]
         },
         {
           "heading": "Programming & Autonomous Control",
           "blocks": [
-            { "type": "text", "text": "Using <b>PID loops</b> and <b>field-wide global odometry </b>, I was able to achieve consistent and efficient autonomous movement from robots. A custom, in-house library increased efficiency while programming and tuning, allowing for more time spent on refining the mechanical aspects of the robot." },
+            { "type": "text", "text": "Using <b>PID loops</b> and <b>field-wide global odometry </b>, I was able to achieve consistent and efficient autonomous movement from robots. A custom, in-house library increased efficiency while programming and tuning, allowing for more time spent on refining the mechanical aspects of the robot. Furthermore, the sophisticated use of various sensors allowed for more accurate and responsive control systems, allowing for adaptive autonomous behavior." },
+            { "type": "images", "columns": 3, "ratio": "4/3", "items": [
+              { "src": "../projects/vex1.jpg", "caption": "2025 robot, CAD render", "size": "half" },
+              { "src": "../projects/vex1.jpg", "caption": "2025 robot, CAD render", "size": "half" },
+              { "src": "../projects/vex1.jpg", "caption": "2025 robot, CAD render", "size": "half" }
+            ]}
+          ]
+        },
+        {
+          "heading": "Gallery",
+          "blocks": [
+            { "type": "text", "text": "I wanted to archive all of the different robots I've created over the years, so I thought I'd just share photos and videos from each season." },
             { "type": "images", "columns": 3, "ratio": "4/3", "items": [
               { "src": "../projects/vex1.jpg", "caption": "2025 robot, CAD render", "size": "half" },
               { "src": "../projects/vex1.jpg", "caption": "2025 robot, CAD render", "size": "half" },
@@ -63,7 +73,6 @@
         "Fusion 360", "C++", "PID", "Odometrey"
       ],
       "previewDesc": "Built nine competition robots across four seasons, led a team of seven members, and directed my team to winning a total of 11 awards at the provincial level. Competed as Team 7614A.",
-      "overview": "",
       "images": {
         "iconImg": "../projects/vexIcon.jpg",
         "heroImg": "../projects/vexHero.jpg",
@@ -72,24 +81,39 @@
     },
     {
       "title": "4 DOF Humanoid Arm",
-      "metadata": [
-        ["", "September 2026"]
-      ],
+      "metadata": ["September 2026", "Affiliated with WATonomous"],
       "links": [
         ["Repo", "https://github.com/username/humanoid-arm"]
       ],
       "tags": [
-        "Solidworks", "Mechanical Design"
+        "Solidworks", "Torque Analysis", "Mechanical Design"
+      ],
+      "sections":[
+        {
+          "heading": "Overview",
+          "blocks": [
+            { "type": "text", "text": "I created a 3 degree-of-freedom lower humanoid arm, that I designed, simulated, and optimized in Solidworks. The first iteration consisted of three joints: the forearm, wrist, and gripper. Each added a degree of freedom, allowing for forearm rotation, wrist flexion, and object grasping, replicating the core motions of a human lower arm.<br><br>The gripper uses a double slider crank to convert the actuator’s motion into linear motion for the jaws, as shown in the GIF above." }
+          ]
+        },
+        {
+          "heading": "Gripper & Wrist redesign",
+          "blocks": [
+            { "type": "text", "text": "The second iteration of the arm focused on redesigning the gripper and wrist to improve manufacturability, assembly, and structural rigidity. The linkages in the gripper were replaced with ball bearings and shoulder bolts, allowing for less slop and lower friction in each linkage. <br><br>The gripper was redesigned to be more compact, while the wrist was redesigned to allow for easier assembly and manufacturing. Furthermore, I redesigned the fingers to be printed of TPU, which allows for high flexibility and confirmation to the shapes that it interacts with." },
+            { "type": "images", "columns": 2, "ratio": "3/4", "items": [
+              { "src": "../projects/hum_armV2gripper.gif", "caption": "CAD render of the first iteration of the arm.", "size": "third" },
+              { "src": "../projects/hum_armV2wrist.gif", "caption": "CAD render of the second iteration of the arm.", "size": "third" }]            }
+          ]
+        }
       ],
       "previewDesc": "Designed a 4 DOF humanoid lower arm, including forearm and wrist frames, with a focus on manufacturability and assembly. Performed torque calculations to ensure chosen actuators could handle required loads.",
       "images": {
-        "iconImg": "../projects/hum_armIcon.png"
+        "iconImg": "../projects/hum_armIcon.png",
+        "heroImg": "../projects/hum_armHero.gif",
+        "heroCaption": "Animation of the opening and closing of the jaws of the end effector."
       }
     },{
       "title": "Pure Pursuit Path Planner",
-      "metadata": [
-        ["", "April 2025"]
-      ],
+      "metadata": ["April 2025", "YR Hacks"],
       "links": [
         ["Repo", ""]
       ],
@@ -102,15 +126,11 @@
       }
     },{
       "title": "Portfolio Website",
-      "metadata": [
-        ["", "October 2026"]
-      ],
+      "metadata": ["October 2026"],
       "links": [
         ["Repo", ""]
       ],
-      "tags": [
-        "Fusion 360", "C++", "PID", "Odometrey"
-      ],
+      "tags": ["HTML/CSS", "JavaScript", "Responsive Design", "Web Development"],
       "previewDesc": "Built nine competition robots across four seasons, led a team of seven members, and directed my team to winning a total of 11 awards at the provincial level. Competed as Team 7614A.",
       "images": {
         "iconImg": ""

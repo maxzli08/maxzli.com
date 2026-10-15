@@ -60,18 +60,6 @@
         <div class="timeline" id="work-experience-timeline"></div>
       </section>
 
-      <!-- ---------- Gallery ---------- -->
-      <!-- <section id="gallery" class="content-section">
-        <p class="section-eyebrow" data-reveal style="--i:0">Gallery</p>
-        <h2 data-reveal style="--i:1">Builds &amp; photos</h2>
-
-        <div class="gallery-grid">
-          <button class="gallery-item" type="button" data-caption="[ Caption ]" data-reveal style="--i:2">
-            <div class="image-frame">[ Image ]</div>
-          </button>
-        </div>
-      </section> -->
-
       <footer class="site-footer">
         <span>Max Li</span>
         <span>2026</span>
@@ -88,13 +76,15 @@
   </aside>
 
   <!-- ============================= LIGHTBOX ============================= -->
-  <!-- <dialog id="lightbox" class="lightbox">
-    <button class="modal-close" type="button">✕</button>
-    <button class="lightbox-nav prev" type="button">‹</button>
-    <div class="image-frame lightbox-image">[ Image ]</div>
-    <p class="lightbox-caption placeholder">[ Caption ]</p>
-    <button class="lightbox-nav next" type="button">›</button>
-  </dialog> -->
+  <dialog id="lightbox" class="lightbox" aria-label="Image viewer">
+    <button class="modal-close lightbox-close" type="button" aria-label="Close image">✕</button>
+    <button class="lightbox-nav prev" type="button" aria-label="Previous image" hidden>‹</button>
+    <div class="lightbox-stage">
+      <img class="lightbox-img" alt="">
+      <p class="lightbox-caption" hidden></p>
+    </div>
+    <button class="lightbox-nav next" type="button" aria-label="Next image" hidden>›</button>
+  </dialog>
 
   <script type="module"src="./scripts/content.js" ></script>
 </body>

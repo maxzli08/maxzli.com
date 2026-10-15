@@ -1,8 +1,37 @@
 import { scrollReveal } from "./scroll.js";
 import { modalListener, timelineListener } from "./modals.js";
+import { initLightbox } from "./lightbox.js";
 let projectDiv = document.getElementById('home-projects');
 let workExperienceDiv = document.getElementById('work-experience-timeline');
 let modalContent = document.getElementById('modal-content');
+
+// new: how many bullets a collapsible list shows before "Show more". Overridden by
+// settings.listVisible in content.json, or per list with a "visible" field.
+let listVisibleDefault = 3;
+
+// new: makes images clickable (opened by lightbox.js). Keyboard-focusable too.
+const ZOOM = 'tabindex="0" role="button"';
+
+// new: renders a "list" block. Add "collapsible": true (and optionally "visible": 3)
+// to a list in content.json to show only the first few bullets with a toggle.
+// Lists with only one bullet left to hide are shown in full, since a toggle isn't worth it.
+const renderList = (block) => {
+  const items = block.items.map((item) => `<li>${item}</li>`);
+  const visible = Math.max(1, block.visible ?? listVisibleDefault);
+  const hiddenCount = items.length - visible;
+  if (!block.collapsible || hiddenCount < 2) {
+    return `<ul class="block-list">${items.join('')}</ul>`;
+  }
+  const moreId = `list-more-${Math.random().toString(36).slice(2, 9)}`;
+  return `
+    <div class="collapsible-list">
+      <ul class="block-list">${items.slice(0, visible).join('')}</ul>
+      <div class="list-more" id="${moreId}">
+        <ul class="block-list">${items.slice(visible).join('')}</ul>
+      </div>
+      <button class="list-toggle" type="button" aria-expanded="false" aria-controls="${moreId}" data-count="${hiddenCount}">[ <span class="list-toggle-label">Show ${hiddenCount} more</span> ]</button>
+    </div>`;
+};
 
 // new: turns one block from a project's "sections" array in content.json into HTML.
 // block types: "text" | "image" | "images" (a row) | "list"
@@ -11,11 +40,11 @@ const renderBlock = (block) => {
     case "text":
       return `<p class="placeholder">${block.text}</p>`;
     case "list":
-      return `<ul class="block-list">${block.items.map((item) => `<li>${item}</li>`).join('')}</ul>`;
+      return renderList(block); // changed: was an inline <ul>; now supports collapsible lists
     case "image":
       return `
         <figure class="block-figure ${block.size || 'full'}">
-          <img class="image-frame" src="${block.src}" alt="${block.alt || block.caption || ''}" style="${block.ratio ? `aspect-ratio:${block.ratio}` : ''}">
+          <img class="image-frame zoomable" ${ZOOM} src="${block.src}" alt="${block.alt || block.caption || ''}" style="${block.ratio ? `aspect-ratio:${block.ratio}` : ''}">
           ${block.caption ? `<figcaption>${block.caption}</figcaption>` : ''}
         </figure>`;
     case "images":
@@ -23,7 +52,7 @@ const renderBlock = (block) => {
         <div class="block-images" style="--cols:${block.columns || block.items.length}">
           ${block.items.map((img) => `
             <figure class="block-figure">
-              <img class="image-frame" src="${img.src}" alt="${img.alt || img.caption || ''}" style="${block.ratio ? `aspect-ratio:${block.ratio}` : ''}">
+              <img class="image-frame zoomable" ${ZOOM} src="${img.src}" alt="${img.alt || img.caption || ''}" style="${block.ratio ? `aspect-ratio:${block.ratio}` : ''}">
               ${img.caption ? `<figcaption>${img.caption}</figcaption>` : ''}
             </figure>`).join('')}
         </div>`;
@@ -39,12 +68,28 @@ const renderSections = (sections = []) => sections.map((section) => `
     ${(section.blocks || []).map(renderBlock).join('')}
   </section>`).join('');
 
+// new: URL-friendly id for each project, used for #deep-links (e.g. maxzli.com/#vex-robotics).
+// Uses the project's optional "slug" field in content.json if set, otherwise its title.
+const RESERVED_HASHES = ['projects', 'experience', 'gallery']; // new: already used by the sidebar section links
+const slugify = (text) => String(text).toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+const usedSlugs = new Set();
+const makeSlug = (project) => {
+  const base = slugify(project.slug || project.title) || 'project';
+  let slug = base, n = 2;
+  while (usedSlugs.has(slug) || RESERVED_HASHES.includes(slug)) slug = `${base}-${n++}`; // new: never duplicates another project or a section anchor
+  usedSlugs.add(slug);
+  return slug;
+};
+
 fetch("./scripts/content.json").then(async (res) => {
   res.json().then((json) => {
+    initLightbox(); // new: set up first so it catches image-load errors from the start
+    listVisibleDefault = json.settings?.listVisible ?? listVisibleDefault; // new
     let projNum = 1;
     json.projects.forEach((project) => {
+      const slug = makeSlug(project); // new
       projectDiv.innerHTML += `
-          <button class="home-project" type="button" data-project="p${projNum}" data-reveal style="--i:${projNum + 1}">
+          <button class="home-project" type="button" data-project="p${projNum}" data-slug="${slug}" data-reveal style="--i:${projNum + 1}">
             <div class="thumb">
               <img class="image-frame" src="${project.images.iconImg}" alt="${project.title}">
               <span class="num">0${projNum}</span>
@@ -58,18 +103,17 @@ fetch("./scripts/content.json").then(async (res) => {
       `;
       const tocEnabled = project.toc ?? json.settings?.showToc ?? true; // new: per-project "toc" wins, then site-wide settings.showToc, then on
       modalContent.innerHTML += `
-        <template class="project-detail" id="p${projNum}" data-toc="${tocEnabled}">
-          <p class="eyebrow placeholder">[ ${project.tags.join(", ")} ]</p>
+        <template class="project-detail" id="p${projNum}" data-slug="${slug}" data-toc="${tocEnabled}">
           <h2 class="placeholder">${project.title}</h2>
           <div class="project-meta">
-            ${project.metadata.map((data) => `<span data-label="${data[0]}" class="placeholder">[ ${data[1]} ]</span>`).join('')}
+            <span class="placeholder">${project.metadata.join('</span><span class="placeholder">')}</span>
           </div>
           <div class="project-links">
             ${project.links.map((link) => `<a href="${link[1]}" target="_blank" class="tech-link">[ ${link[0]} ]</a>`).join('')}
           </div>
           ${project.images.heroImg ? `
           <figure class="hero-figure">
-            <img src="${project.images.heroImg}" alt="${project.title}" class="image-frame hero-image">
+            <img src="${project.images.heroImg}" alt="${project.title}" class="image-frame hero-image zoomable" ${ZOOM}>
             ${project.images.heroCaption ? `<figcaption class="placeholder">${project.images.heroCaption}</figcaption>` : ''}
           </figure>` : ''}
           ${renderSections(project.sections)}
@@ -94,21 +138,14 @@ fetch("./scripts/content.json").then(async (res) => {
               <p class="placeholder">${job.description}</p>
               ${job.images && job.images.length ? `
               <div class="timeline-images">
-                ${job.images.map((src) => `<img class="image-frame" src="${src}" alt="${job.role}">`).join('')}
-              </div>` : `
-              <div class="timeline-images">
-                <div class="image-frame">[ Image ]</div>
-              </div>`}
+                ${job.images.map((src) => `<img class="image-frame zoomable" ${ZOOM} src="${src}" alt="${job.role}">`).join('')}
+              </div>` : ''}
             </div>
           </div>
         </article>
       `;
       jobNum++;
     });
-
-    // json.gallery.forEach((item) => {
-    
-    // });
     scrollReveal();
     modalListener();
     timelineListener();

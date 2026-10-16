@@ -58,7 +58,7 @@ export const modalListener = () => {
   let lastFocusedTrigger = null;
   let openSlug = null; // new: slug of the project currently showing in the drawer
   let openedByPush = false; // new: true when opening added a history entry, so closing can step back out of it
-
+  drawerContent.querySelectorAll('iframe[src*="youtube"]').forEach((f) => f.contentWindow?.postMessage(JSON.stringify({ event: 'command', func: 'pauseVideo', args: '' }), 'https://www.youtube-nocookie.com')); // new: pause YouTube embeds when the drawer closes
   // new: reads the project slug out of the URL, e.g. "#vex-robotics" -> "vex-robotics"
   const hashSlug = () => {
     try { return decodeURIComponent(location.hash.slice(1)).toLowerCase(); } catch { return ''; }

@@ -32,7 +32,40 @@ const renderList = (block) => {
       <button class="list-toggle" type="button" aria-expanded="false" aria-controls="${moreId}" data-count="${hiddenCount}">[ <span class="list-toggle-label">Show ${hiddenCount} more</span> ]</button>
     </div>`;
 };
+// new: recognises YouTube links (watch, youtu.be, shorts, embed, live) and returns { id, start, short }, or null if it isn't one.
+// A start time in the link (?t=90, ?t=1m30s, ?start=90) is kept.
+const parseYouTube = (src) => {
+  let u;
+  try { u = new URL(src, location.href); } catch { return null; }
+  const host = u.hostname.replace(/^(www\.|m\.)/, '');
+  const parts = u.pathname.split('/').filter(Boolean);
+  let id = null, short = false;
+  if (host === 'youtu.be') id = parts[0];
+  else if (host === 'youtube.com' || host === 'youtube-nocookie.com') {
+    if (u.pathname === '/watch') id = u.searchParams.get('v');
+    else if (['embed', 'shorts', 'live', 'v'].includes(parts[0])) { id = parts[1]; short = parts[0] === 'shorts'; }
+  }
+  if (!id || !/^[\w-]{11}$/.test(id)) return null;
+  const t = u.searchParams.get('start') || u.searchParams.get('t') || '';
+  const m = t.match(/^(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s?)?$/);
+  const start = t && m ? (+m[1] || 0) * 3600 + (+m[2] || 0) * 60 + (+m[3] || 0) : 0;
+  return { id, start, short };
+};
 
+// new: renders one photo slot. `media` is a path or YouTube link, or an object { src, caption, alt }.
+// YouTube links become an embedded player in the same frame/aspect ratio as photos.
+const renderMedia = (media, { cls = 'image-frame', ratio = '', alt = '' } = {}) => {
+  const m = typeof media === 'string' ? { src: media } : media;
+  const label = m.alt || m.caption || alt;
+  const yt = parseYouTube(m.src);
+  if (yt) {
+    const params = new URLSearchParams({ rel: '0', playsinline: '1', enablejsapi: '1', origin: location.origin });
+    if (yt.start) params.set('start', yt.start);
+    const ytRatio = ratio || (yt.short ? '9/16' : ''); // Shorts default to portrait
+    return `<iframe class="${cls} is-embed" src="https://www.youtube-nocookie.com/embed/${yt.id}?${params}" title="${label || 'YouTube video'}" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen${ytRatio ? ` style="aspect-ratio:${ytRatio}"` : ''}></iframe>`;
+  }
+  return `<img class="${cls}" src="${m.src}" alt="${label}"${ratio ? ` style="aspect-ratio:${ratio}"` : ''}>`;
+};
 // new: turns one block from a project's "sections" array in content.json into HTML.
 // block types: "text" | "image" | "images" (a row) | "list"
 const renderBlock = (block) => {
@@ -44,7 +77,7 @@ const renderBlock = (block) => {
     case "image":
       return `
         <figure class="block-figure ${block.size || 'full'}">
-          <img class="image-frame zoomable" ${ZOOM} src="${block.src}" alt="${block.alt || block.caption || ''}" style="${block.ratio ? `aspect-ratio:${block.ratio}` : ''}">
+          ${renderMedia(block, { ratio: block.ratio })}
           ${block.caption ? `<figcaption>${block.caption}</figcaption>` : ''}
         </figure>`;
     case "images":
@@ -52,7 +85,7 @@ const renderBlock = (block) => {
         <div class="block-images" style="--cols:${block.columns || block.items.length}">
           ${block.items.map((img) => `
             <figure class="block-figure">
-              <img class="image-frame zoomable" ${ZOOM} src="${img.src}" alt="${img.alt || img.caption || ''}" style="${block.ratio ? `aspect-ratio:${block.ratio}` : ''}">
+              ${renderMedia(img, { ratio: block.ratio })}
               ${img.caption ? `<figcaption>${img.caption}</figcaption>` : ''}
             </figure>`).join('')}
         </div>`;
@@ -113,7 +146,7 @@ fetch("./scripts/content.json").then(async (res) => {
           </div>
           ${project.images.heroImg ? `
           <figure class="hero-figure">
-            <img src="${project.images.heroImg}" alt="${project.title}" class="image-frame hero-image zoomable" ${ZOOM}>
+            ${renderMedia(project.images.heroImg, { cls: 'image-frame hero-image', alt: project.title })}
             ${project.images.heroCaption ? `<figcaption class="placeholder">${project.images.heroCaption}</figcaption>` : ''}
           </figure>` : ''}
           ${renderSections(project.sections)}
@@ -151,3 +184,19 @@ fetch("./scripts/content.json").then(async (res) => {
     timelineListener();
   });
 })
+
+/*
+
+
+        {
+          "heading": "Gallery",
+          "blocks": [
+            { "type": "text", "text": "I wanted to archive all of the different robots I've created over the years, so I thought I'd just share photos and videos from each season." },
+            { "type": "images", "columns": 3, "ratio": "4/3", "items": [
+              { "src": "../projects/vex1.jpg", "caption": "2025 robot, CAD render", "size": "half" },
+              { "src": "../projects/vex1.jpg", "caption": "2025 robot, CAD render", "size": "half" },
+              { "src": "../projects/vex1.jpg", "caption": "2025 robot, CAD render", "size": "half" }
+            ]}
+          ]
+        }
+          */

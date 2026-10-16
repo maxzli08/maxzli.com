@@ -471,28 +471,28 @@ button { font-family: inherit; }
   max-height: 0; /* fix: collapsed by default — replaces grid-template-rows: 0fr */
   opacity: 0; /* fix: fade the text in/out alongside the height animation */
   visibility: hidden; /* new: keeps collapsed content (and its clickable images) out of the tab order */
-  transition: max-height 0.45s cubic-bezier(0.16, 0.8, 0.3, 1), opacity 0.3s ease, visibility 0s linear 0.45s; /* fix: animates max-height instead of grid-template-rows; visibility flips after the collapse finishes */
+  transition: max-height 0.45s cubic-bezier(0.16, 0.8, 0.3, 1), opacity 0.3s ease, visibility 0s linear 0.45s; 
 }
 
 .timeline-entry.expanded .timeline-details {
-  opacity: 1; /* fix */
-  visibility: visible; /* new */
-  transition: max-height 0.45s cubic-bezier(0.16, 0.8, 0.3, 1), opacity 0.3s ease, visibility 0s; /* new: appear immediately when opening */
+  opacity: 1; 
+  visibility: visible; 
+  transition: max-height 0.45s cubic-bezier(0.16, 0.8, 0.3, 1), opacity 0.3s ease, visibility 0s; 
 }
 
 .timeline-details-inner {
-  padding: 4px 0 20px 176px; /* unchanged — overflow: hidden moved up to .timeline-details above */
+  padding: 4px 0 20px 176px;
 }
-.timeline-details-inner p { margin: 0 0 16px; max-width: 58ch; color: var(--ink-soft); } /* new */
+.timeline-details-inner p { margin: 0 0 16px; max-width: 58ch; color: var(--ink-soft); } 
 
 .timeline-images {
-  display: grid; /* new */
-  grid-template-columns: repeat(3, 1fr); /* new */
-  gap: 12px; /* new */
-  max-width: 58ch; /* new */
-} /* new */
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 12px; 
+  max-width: 58ch; 
+} 
 
-.timeline-images .image-frame { aspect-ratio: 4 / 3; font-size: 11px; } /* new */
+.timeline-images .image-frame { aspect-ratio: 4 / 3; font-size: 11px; } 
 
 @media (max-width: 860px) {
   .timeline::before { left: 6px; }
@@ -500,8 +500,8 @@ button { font-family: inherit; }
   .timeline-entry .when { text-align: left; }
   .timeline-entry .when::after { left: -1px; right: auto; top: 8px; }
   .timeline-entry .body { padding-left: 20px; border-left: 1px solid var(--line); }
-  .timeline-details-inner { padding: 4px 0 20px 20px; } /* new: match mobile's 20px body indent instead of the 176px desktop offset */
-  .timeline-images { grid-template-columns: repeat(2, 1fr); } /* new: fewer columns on narrow screens */
+  .timeline-details-inner { padding: 4px 0 20px 20px; } 
+  .timeline-images { grid-template-columns: repeat(2, 1fr); } 
 }
 
 /* -------------------------------------------------------------------------
@@ -557,18 +557,17 @@ button { font-family: inherit; }
 .project-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 0; /* changed: spacing now comes from the "·" separators below */
+  gap: 4px 0; 
   font-family: var(--mono);
   font-size: 13px;
   color: var(--ink-soft);
   margin: 0 0 18px;
 }
 .project-meta span::before { content: attr(data-label); color: var(--muted); margin-right: 6px; }
-.project-meta span[data-label=""]::before { display: none; } /* new: no stray gap when an entry has no label */
-.project-meta span:not(:last-child)::after { content: "·"; margin: 0 10px; color: var(--muted); } /* new: dots between entries instead of brackets */
+.project-meta span[data-label=""]::before { display: none; } 
+.project-meta span:not(:last-child)::after { content: "·"; margin: 0 10px; color: var(--muted); } 
 
 .project-links { display: flex; gap: 22px; margin-bottom: 8px; }
-/* changed: tags now sit directly above the hero image, no label */
 .project-tags {
   margin: 12px 0 0;
   font-family: var(--mono);
@@ -577,13 +576,11 @@ button { font-family: inherit; }
   color: var(--ink-soft);
 }
 .project-tags span:not(:last-child)::after { content: "·"; margin: 0 10px; color: var(--muted); }
-/* new: table of contents row in project modals — small, muted, no box.
-   Two columns (label | links) so wrapped lines hang under the first link
-   instead of going back under "Jump to". */
+
 .modal-toc {
   display: grid;
-  grid-template-columns: auto 1fr; /* changed: label column + links column */
-  column-gap: 16px; /* changed: this is the indent for wrapped lines */
+  grid-template-columns: auto 1fr;
+  column-gap: 16px; 
   align-items: baseline;
   margin: 14px 0 0;
   font-family: var(--mono);
@@ -591,13 +588,13 @@ button { font-family: inherit; }
   line-height: 1.5;
 }
 .modal-toc-label { color: var(--muted); }
-.modal-toc-links { /* new */
+.modal-toc-links {
   display: flex;
   flex-wrap: wrap;
   row-gap: 4px;
   min-width: 0;
 }
-.modal-toc-sep { /* new: the "/" between entries */
+.modal-toc-sep {
   margin: 0 12px;
   color: var(--muted);
 }
@@ -609,27 +606,26 @@ button { font-family: inherit; }
 .modal-toc a:hover,
 .modal-toc a:focus-visible { color: var(--accent); border-bottom-color: var(--accent); }
 .hero-figure {
-  margin: 32px 0; /* moved here from the image itself */
+  margin: 32px 0; 
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
 .modal-content .image-frame.hero-image {
-  margin: 0; /* changed: spacing now lives on .hero-figure */
+  margin: 0; 
   width: 100%;
   max-height: 55vh;
   object-fit: cover;
   padding: 0;
 }
 
-.hero-figure figcaption { /* new */
+.hero-figure figcaption { 
   font-family: var(--mono);
   font-size: 0.8rem;
   color: var(--ink-soft);
   text-align: center;
 }
-/* new: styles for the flexible blocks inside project sections */
 .block-figure {
   margin: 0 0 16px;
   display: flex;
@@ -643,7 +639,7 @@ button { font-family: inherit; }
 
 .block-figure .image-frame {
   width: 100%;
-  padding: 0; /* removes the placeholder padding so photos fill the frame */
+  padding: 0;
   object-fit: cover;
   max-height: 55vh;
 }
@@ -654,7 +650,14 @@ button { font-family: inherit; }
   color: var(--ink-soft);
   text-align: center;
 }
-
+.modal-content iframe.image-frame.is-embed {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: #000;
+  max-height: 55vh;
+}
 .block-images {
   display: grid;
   grid-template-columns: repeat(var(--cols, 2), 1fr);

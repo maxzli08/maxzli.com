@@ -57,7 +57,7 @@
             { "type": "images", "columns": 3, "ratio": "9/16", "items": [
               { "src": "https://youtube.com/shorts/Whvh739Bt7k", "caption": "One of our autonomous routes at 2026 Provincials", "size": "half" },
               { "src": "https://youtube.com/shorts/tzwXfnwudj0", "caption": "A solo winpoint autonomous route for 2025 Provincials", "size": "half" },
-              { "src": "https://youtube.com/shorts/yk3QrOftk4M", "caption": "Our most consistent autonomous route at 2024 Provincials", "size": "half" }
+              { "src": "https://youtube.com/shorts/yk3QrOftk4M", "caption": "Our most consistent autonomous route at 2024 Provincials (we're the top robot)", "size": "half" }
             ]}
           ]
         }

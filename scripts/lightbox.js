@@ -1,8 +1,3 @@
-// Click-to-enlarge for images. Any <img class="zoomable"> opens in a full-screen
-// viewer (the <dialog id="lightbox"> in index.html). Uses event delegation, so it
-// also works for images inside the project drawer, which is rebuilt on every open.
-// Prev/next arrows (and the arrow keys) step through the images in the same
-// project drawer or the same job entry.
 export const initLightbox = () => {
   const dlg = document.getElementById('lightbox');
   if (!dlg) return;
@@ -15,7 +10,7 @@ export const initLightbox = () => {
   let group = [];
   let index = 0;
 
-  const isLoaded = (el) => el.complete && el.naturalWidth > 0; // skips missing/broken images
+  const isLoaded = (el) => el.complete && el.naturalWidth > 0; 
 
   const show = (i) => {
     index = (i + group.length) % group.length;
@@ -49,14 +44,12 @@ export const initLightbox = () => {
       if (e.key === 'ArrowLeft' && group.length > 1) show(index - 1);
       return;
     }
-    // keyboard users: Enter or Space on a focused image opens it
     if ((e.key === 'Enter' || e.key === ' ') && e.target.matches?.('img.zoomable') && isLoaded(e.target)) {
       e.preventDefault();
       open(e.target);
     }
   });
 
-  // an image that fails to load stops looking clickable
   document.addEventListener('error', (e) => {
     const el = e.target;
     if (el.matches?.('img.zoomable')) {
@@ -70,7 +63,6 @@ export const initLightbox = () => {
   nextBtn.addEventListener('click', () => show(index + 1));
   closeBtn.addEventListener('click', () => dlg.close());
 
-  // clicking the dark area around the image closes it
   dlg.addEventListener('click', (e) => {
     if (e.target === dlg || e.target.classList.contains('lightbox-stage')) dlg.close();
   });

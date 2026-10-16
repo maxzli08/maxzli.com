@@ -5,16 +5,10 @@ let projectDiv = document.getElementById('home-projects');
 let workExperienceDiv = document.getElementById('work-experience-timeline');
 let modalContent = document.getElementById('modal-content');
 
-// new: how many bullets a collapsible list shows before "Show more". Overridden by
-// settings.listVisible in content.json, or per list with a "visible" field.
 let listVisibleDefault = 3;
 
-// new: makes images clickable (opened by lightbox.js). Keyboard-focusable too.
 const ZOOM = 'tabindex="0" role="button"';
 
-// new: renders a "list" block. Add "collapsible": true (and optionally "visible": 3)
-// to a list in content.json to show only the first few bullets with a toggle.
-// Lists with only one bullet left to hide are shown in full, since a toggle isn't worth it.
 const renderList = (block) => {
   const items = block.items.map((item) => `<li>${item}</li>`);
   const visible = Math.max(1, block.visible ?? listVisibleDefault);
@@ -32,8 +26,6 @@ const renderList = (block) => {
       <button class="list-toggle" type="button" aria-expanded="false" aria-controls="${moreId}" data-count="${hiddenCount}">[ <span class="list-toggle-label">Show ${hiddenCount} more</span> ]</button>
     </div>`;
 };
-// new: recognises YouTube links (watch, youtu.be, shorts, embed, live) and returns { id, start, short }, or null if it isn't one.
-// A start time in the link (?t=90, ?t=1m30s, ?start=90) is kept.
 const parseYouTube = (src) => {
   let u;
   try { u = new URL(src, location.href); } catch { return null; }
@@ -51,9 +43,6 @@ const parseYouTube = (src) => {
   const start = t && m ? (+m[1] || 0) * 3600 + (+m[2] || 0) * 60 + (+m[3] || 0) : 0;
   return { id, start, short };
 };
-
-// new: renders one photo slot. `media` is a path or YouTube link, or an object { src, caption, alt }.
-// YouTube links become an embedded player in the same frame/aspect ratio as photos.
 const renderMedia = (media, { cls = 'image-frame', ratio = '', alt = '' } = {}) => {
   const m = typeof media === 'string' ? { src: media } : media;
   const label = m.alt || m.caption || alt;
@@ -61,19 +50,17 @@ const renderMedia = (media, { cls = 'image-frame', ratio = '', alt = '' } = {}) 
   if (yt) {
     const params = new URLSearchParams({ rel: '0', playsinline: '1', enablejsapi: '1', origin: location.origin });
     if (yt.start) params.set('start', yt.start);
-    const ytRatio = ratio || (yt.short ? '9/16' : ''); // Shorts default to portrait
+    const ytRatio = ratio || (yt.short ? '9/16' : ''); 
     return `<iframe class="${cls} is-embed" src="https://www.youtube-nocookie.com/embed/${yt.id}?${params}" title="${label || 'YouTube video'}" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen${ytRatio ? ` style="aspect-ratio:${ytRatio}"` : ''}></iframe>`;
   }
   return `<img class="${cls}" src="${m.src}" alt="${label}"${ratio ? ` style="aspect-ratio:${ratio}"` : ''}>`;
 };
-// new: turns one block from a project's "sections" array in content.json into HTML.
-// block types: "text" | "image" | "images" (a row) | "list"
 const renderBlock = (block) => {
   switch (block.type) {
     case "text":
       return `<p class="placeholder">${block.text}</p>`;
     case "list":
-      return renderList(block); // changed: was an inline <ul>; now supports collapsible lists
+      return renderList(block); 
     case "image":
       return `
         <figure class="block-figure ${block.size || 'full'}">
@@ -93,34 +80,29 @@ const renderBlock = (block) => {
       return '';
   }
 };
-
-// new: one <section> per entry in the project's "sections" array
 const renderSections = (sections = []) => sections.map((section) => `
   <section>
     ${section.heading ? `<h3>${section.heading}</h3>` : ''}
     ${(section.blocks || []).map(renderBlock).join('')}
   </section>`).join('');
-
-// new: URL-friendly id for each project, used for #deep-links (e.g. maxzli.com/#vex-robotics).
-// Uses the project's optional "slug" field in content.json if set, otherwise its title.
-const RESERVED_HASHES = ['projects', 'experience', 'gallery']; // new: already used by the sidebar section links
+const RESERVED_HASHES = ['projects', 'experience', 'gallery']; 
 const slugify = (text) => String(text).toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 const usedSlugs = new Set();
 const makeSlug = (project) => {
   const base = slugify(project.slug || project.title) || 'project';
   let slug = base, n = 2;
-  while (usedSlugs.has(slug) || RESERVED_HASHES.includes(slug)) slug = `${base}-${n++}`; // new: never duplicates another project or a section anchor
+  while (usedSlugs.has(slug) || RESERVED_HASHES.includes(slug)) slug = `${base}-${n++}`; 
   usedSlugs.add(slug);
   return slug;
 };
 
 fetch("./scripts/content.json").then(async (res) => {
   res.json().then((json) => {
-    initLightbox(); // new: set up first so it catches image-load errors from the start
-    listVisibleDefault = json.settings?.listVisible ?? listVisibleDefault; // new
+    initLightbox(); 
+    listVisibleDefault = json.settings?.listVisible ?? listVisibleDefault; 
     let projNum = 1;
     json.projects.forEach((project) => {
-      const slug = makeSlug(project); // new
+      const slug = makeSlug(project); 
       projectDiv.innerHTML += `
           <button class="home-project" type="button" data-project="p${projNum}" data-slug="${slug}" data-reveal style="--i:${projNum + 1}">
             <div class="thumb">
@@ -134,7 +116,7 @@ fetch("./scripts/content.json").then(async (res) => {
             </div>
           </button>
       `;
-      const tocEnabled = project.toc ?? json.settings?.showToc ?? true; // new: per-project "toc" wins, then site-wide settings.showToc, then on
+      const tocEnabled = project.toc ?? json.settings?.showToc ?? true; 
       modalContent.innerHTML += `
         <template class="project-detail" id="p${projNum}" data-slug="${slug}" data-toc="${tocEnabled}">
           <h2 class="placeholder">${project.title}</h2>

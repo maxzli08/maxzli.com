@@ -444,7 +444,7 @@ button { font-family: inherit; }
   border: none;
   text-align: left; 
   width: 100%; 
-  cursor: pointer;
+  /* cursor: pointer; */
   color: inherit; 
   font-family: inherit; 
 }
@@ -453,8 +453,8 @@ button { font-family: inherit; }
 .timeline-entry ul { margin: 0; padding-left: 18px; color: var(--ink-soft); }
 .timeline-entry li { margin-bottom: 6px; max-width: 58ch; }
 
-.timeline-toggle:hover h3,
-.timeline-toggle:focus-visible h3 { color: var(--accent); }
+/* .timeline-toggle:hover h3,
+.timeline-toggle:focus-visible h3 { color: var(--accent); } */
 .timeline-details {
   grid-column: 1 / -1; 
   overflow: hidden;

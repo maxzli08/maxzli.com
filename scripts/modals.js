@@ -5,7 +5,7 @@ export const modalListener = () => {
   const drawerCloseBtn = projectDrawer.querySelector('.modal-close');
   let lastFocusedTrigger = null;
 
-  function openDrawer() {
+  const openDrawer = () => {
     document.body.classList.add('modal-open');
     projectDrawer.classList.add('open');
     drawerBackdrop.classList.add('open');
@@ -13,7 +13,7 @@ export const modalListener = () => {
     drawerCloseBtn.focus();
   }
 
-  function closeDrawer() {
+  const closeDrawer = () => {
     projectDrawer.classList.remove('open');
     drawerBackdrop.classList.remove('open');
     projectDrawer.setAttribute('aria-hidden', 'true');

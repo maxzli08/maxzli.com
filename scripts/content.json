@@ -27,7 +27,7 @@
         {
           "heading": "Achievements",
           "blocks": [
-            { "type": "list", "collapsible": true, "visible": 2, "items": ["Design award at 2025 Caution Tape Halloween Qualifier, awarded to the best-designed robot and the most professional approach to the engineering design process. <b>(Top 1.4% provincially)</b>", "Excellence award at 2025 Ontario VEX V5 Robotics Competition School Board Invitational, awarded to the highest-performing team at the event. <b>(Top 5% among public schools provincially)</b>", "Quarterfinalists at 2026 VEX Ontario Provincial Championship", "Design award at 2026 Caution Tape Lunar New Year Qualifier", "Design award and tournament finalists at 2025 Toronto VEX Qualifier", "Innovate award at 2025 Caledon Qualifier", "Think award and tournament finalists at 2025 Waterloo VEX Qualifier", "Innovate award at 2024 Toronto VEX Qualifier", "Design award at 2024 No Way Snow Day Qualifier", "Judges award at 2024 CSAA Qualifier", "Innovate award at 2023 Brampton VEX Qualifier"] }
+            { "type": "list", "collapsible": true, "visible": 2, "items": ["Design award at 2025 Caution Tape Halloween Qualifier, awarded to the best-designed robot and the most professional approach to the engineering design process. <b>(Top 1.4% provincially)</b>", "Excellence award at 2025 Ontario VEX V5 Robotics Competition School Board Invitational, awarded to the highest-performing team at the event. <b>(#1 among public schools provincially)</b>", "Quarterfinalists at 2026 VEX Ontario Provincial Championship", "Design award at 2026 Caution Tape Lunar New Year Qualifier", "Design award and tournament finalists at 2025 Toronto VEX Qualifier", "Innovate award at 2025 Caledon Qualifier", "Think award and tournament finalists at 2025 Waterloo VEX Qualifier", "Innovate award at 2024 Toronto VEX Qualifier", "Design award at 2024 No Way Snow Day Qualifier", "Judges award at 2024 CSAA Qualifier", "Innovate award at 2023 Brampton VEX Qualifier"] }
           ]
         },
         {
@@ -132,8 +132,8 @@
           "blocks": [
             { "type": "text", "text": "Developed a custom C++ Pure Pursuit library for our holonomic drivetrain, allowing the robot to autonomously follow smooth Bézier curves with precision. The Pure Pursuit algorithm works by continuously looking ahead along a planned path, selecting a target point, and adjusting the robot’s movement to steer toward it as it progresses along the curve." },
             { "type": "images", "columns": 2, "ratio": "16/9", "items": [
-              { "src": "https://youtu.be/IR3y2Ry0Tvw", "caption": "A visual representation of the Pure Pursuit algorithm, showing the robot's current position, the lookahead point, and the path it is following." },
-              { "src": "../projects/bezier_purepursuitdiagram.png", "caption": "A video of the robot following a Bézier curve using the Pure Pursuit algorithm.", "size": "half" }
+              { "src": "https://youtu.be/IR3y2Ry0Tvw", "caption": "A video of the robot following a Bézier curve using the Pure Pursuit algorithm." },
+              { "src": "../projects/bezier_purepursuitdiagram.png", "caption": "A visual representation of the Pure Pursuit algorithm, showing the robot's current position, the lookahead point, and the path it is following.", "size": "half" }
 
             ]}
           ]

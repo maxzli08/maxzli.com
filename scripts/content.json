@@ -1,75 +1,224 @@
 {
+  "settings": {
+    "showToc": true,
+    "listVisible": 3
+  },
   "projects": [
     {
       "title": "VEX Robotics",
-      "metadata": [
-        ["", "2022-2026"],
-        ["", "Team Captain, Lead Designer & Programmer"]
+      "metadata": ["2022-2026","Team Captain, Lead Designer & Programmer"
       ],
       "links": [
-        ["Repo", "https://github.com/username/vex-robotics"],
-        ["Demo", "https://example.com/vex-demo"],
-        ["Write-up", "https://example.com/vex-writeup"]
+        ["2024 Repo", "https://github.com/maxzli08/2023-2024-vex"],
+        ["2025 Repo", "https://github.com/maxzli08/VEX-High-Stakes-Robot-2-7614a"],
+        ["2026 Repo", "https://github.com/maxzli08/VEX-Push-back-robot-2-7614A"]
+      ],
+      "sections": [
+        {
+          "heading": "Introduction",
+          "blocks": [
+            { "type": "text", "text": "I was the team captain, design, and programming lead for team 7614A, representing Newmarket High School. I was responsible for end-to-end development and design of the robot. We competed in four seasons of the VEX V5 Robotics Competition, achieving accalades on the regional and provincial scale." },
+            { "type": "images", "columns": 2, "ratio": "16/9", "items": [
+              { "src": "../projects/vex26trophyspread.png ", "caption": "2026 Provincials Robot and the season's trophies", "size": "half" },
+              { "src": "../projects/vex25trophyspread.jpg", "caption": "2025 Provincials Robot and the season's trophies", "size": "half" }
+            ]}
+          ]
+        },
+        {
+          "heading": "Achievements",
+          "blocks": [
+            { "type": "list", "collapsible": true, "visible": 2, "items": ["Design award at 2025 Caution Tape Halloween Qualifier, awarded to the best-designed robot and the most professional approach to the engineering design process. <b>(Top 1.4% provincially)</b>", "Excellence award at 2025 Ontario VEX V5 Robotics Competition School Board Invitational, awarded to the highest-performing team at the event. <b>(Top 5% among public schools provincially)</b>", "Quarterfinalists at 2026 VEX Ontario Provincial Championship", "Design award at 2026 Caution Tape Lunar New Year Qualifier", "Design award and tournament finalists at 2025 Toronto VEX Qualifier", "Innovate award at 2025 Caledon Qualifier", "Think award and tournament finalists at 2025 Waterloo VEX Qualifier", "Innovate award at 2024 Toronto VEX Qualifier", "Design award at 2024 No Way Snow Day Qualifier", "Judges award at 2024 CSAA Qualifier", "Innovate award at 2023 Brampton VEX Qualifier"] }
+          ]
+        },
+        {
+          "heading": "Engineering Design Process",
+          "blocks": [
+            { "type": "text", "text": "Our team implemented a seven step engineering design process. We applied this process to multiple design cycles per season, resulting in robots iterations that quantifiably improved as the season progressed. I led the documentation of our design cycles in <i><a href='https://heyzine.com/flip-book/08ea3cacf7.html' target='_blank' class='tech-link'>engineering notebooks</a></i>, which led us to winning numerous judged awards." },
+            { "type": "images", "columns": 2, "ratio": "16/9", "items": [
+              { "src": "../projects/vex_drawing1.png", "caption": "2025 Provincials Robot and the season's trophies", "size": "half" },
+              { "src": "../projects/vex_drawing2.png", "caption": "2026 Provincials Robot and the season's trophies", "size": "half" }
+            ]}
+          ]
+        },
+        {
+          "heading": "3D Design & CAD",
+          "blocks": [
+            { "type": "text", "text": "I led the usage of <b>Fusion 360</b> to design entire robots and prototypes before assembly, ensuring that all geometries and assemblies would work well together. I led the use of CNC milling on custom plastic pieces designed in CAD. We used DFM and DFA as foundational design philosophies in order to streamline the building process." },
+            { "type": "images", "columns": 2, "ratio": "3/4", "items": [
+              { "src": "../projects/vex25cad1.png", "caption": "2025 Early season robot render", "size": "half" },
+              { "src": "../projects/vex25cadreal.jpg", "caption": "2025 robot, CAD render", "size": "half" }
+            ]}
+          ]
+        },
+        {
+          "heading": "Programming & Autonomous Control",
+          "blocks": [
+            { "type": "text", "text": "Using <b>PID loops</b> and <b>field-wide global odometry </b>, I was able to achieve consistent and efficient autonomous movement from robots. A custom, in-house library increased efficiency while programming and tuning, allowing for more time spent on refining the mechanical aspects of the robot. Furthermore, the sophisticated use of various sensors allowed for more accurate and responsive control systems, allowing for adaptive autonomous behavior. All of the routes shown below are fully autonomous, with zero human intervention." },
+            { "type": "images", "columns": 3, "ratio": "9/16", "items": [
+              { "src": "https://youtube.com/shorts/Whvh739Bt7k", "caption": "One of our autonomous routes at 2026 Provincials", "size": "half" },
+              { "src": "https://youtube.com/shorts/tzwXfnwudj0", "caption": "A solo winpoint autonomous route for 2025 Provincials", "size": "half" },
+              { "src": "https://youtube.com/shorts/yk3QrOftk4M", "caption": "Our most consistent autonomous route at 2024 Provincials (we're the top robot)", "size": "half" }
+            ]}
+          ]
+        }
       ],
       "tags": [
         "Fusion 360", "C++", "PID", "Odometrey"
       ],
       "previewDesc": "Built nine competition robots across four seasons, led a team of seven members, and directed my team to winning a total of 11 awards at the provincial level. Competed as Team 7614A.",
       "images": {
-        "iconImg": "../projects/vexIcon.jpg"
+        "iconImg": "../projects/vexIcon.jpg",
+        "heroImg": "../projects/vexHero.jpg",
+        "heroCaption": "My team at the 2025 Waterloo VEX Robotics Competition, where we won the Think Award and placed 2nd overall."
       }
     },
     {
-      "title": "4 DOF Humanoid Arm",
-      "metadata": [
-        ["Timeframe", "September 2026"]
-      ],
+      "title": "3 DOF Humanoid Arm",
+      "metadata": ["September 2026", "Affiliated with WATonomous"],
       "links": [
         ["Repo", "https://github.com/username/humanoid-arm"]
       ],
       "tags": [
-        "Fusion 360", "C++", "PID", "Odometrey"
+        "Solidworks", "Torque Analysis", "Mechanical Design"
       ],
-      "previewDesc": "Built nine competition robots across four seasons, led a team of seven members, and directed my team to winning a total of 11 awards at the provincial level. Competed as Team 7614A.",
+      "sections":[
+        {
+          "heading": "Overview",
+          "blocks": [
+            { "type": "text", "text": "I created a 3 degree-of-freedom lower humanoid arm, that I designed, simulated, and optimized in Solidworks. The first iteration consisted of three joints: the forearm, wrist, and gripper. Each added a degree of freedom, allowing for forearm rotation, wrist flexion, and object grasping, replicating the core motions of a human lower arm.<br><br>The gripper uses a double slider crank to convert the actuator’s motion into linear motion for the jaws, as shown in the GIF above." }
+          ]
+        },
+        {
+          "heading": "Gripper & Wrist redesign",
+          "blocks": [
+            { "type": "text", "text": "The second iteration of the arm focused on redesigning the gripper and wrist to improve manufacturability, assembly, and structural rigidity. The linkages in the gripper were replaced with ball bearings and shoulder bolts, allowing for less slop and lower friction in each linkage. <br><br>The gripper was redesigned to be more compact, while the wrist was redesigned to allow for easier assembly and manufacturing. Furthermore, I redesigned the fingers to be printed of TPU, which allows for high flexibility and confirmation to the shapes that it interacts with." },
+            { "type": "images", "columns": 2, "ratio": "3/4", "items": [
+              { "src": "../projects/hum_armV2gripper.gif", "caption": "CAD render of the first iteration of the arm.", "size": "third" },
+              { "src": "../projects/hum_armV2wrist.gif", "caption": "CAD render of the second iteration of the arm.", "size": "third" }]            }
+          ]
+        }
+      ],
+      "previewDesc": "Designed a 3 DOF humanoid lower arm, including forearm and wrist frames, with a focus on manufacturability and assembly. Performed torque calculations to ensure chosen actuators could handle required loads.",
       "images": {
-        "iconImg": "../projects/hum_armIcon.png"
+        "iconImg": "../projects/hum_armIcon.png",
+        "heroImg": "../projects/hum_armHero.gif",
+        "heroCaption": "Animation of the opening and closing of the jaws of the end effector."
       }
     },{
-      "title": "Pure Pursuit Path Planner",
-      "metadata": [
-        ["Timeframe", "April 2025"],
-        ["Role", "Team Captain, Lead Designer & Programmer"]
-      ],
+      "title": "bezier buddy",
+      "metadata": ["April 2025", "YR Hacks"],
       "links": [
-        ["Repo", ""]
+        ["Repo", "https://github.com/maxzli08/bezier-buddy"]
+      ],
+      "sections": [
+        {
+          "heading": "Overview",
+          "blocks": [
+            { "type": "text", "text": "My team and I at YR Hacks 2025 created a 4-motor holonomic drivetrain from scratch. We added parallel and perpendicular tracking wheels to implement odometry. <br><br>The goal was to create a tool to help students understand Bézier curves and the control algorithms that enable robots to follow them. We created a web application that could take in various points on a Cartesian plane and output a Bezier curve that could be fed into the pure pursuit library for the drivetrain." }
+          ]
+        },
+        {
+          "heading": "The Build",
+          "blocks": [
+            { "type": "text", "text": "We created the drivetrain from a mix of 3d printed gussets and VEX V5 robotics parts. We also used CNC-milled polycarbonate pieces to create custom tracking wheel sleds, allowing for dynamic position tracking. The robot itself is a X-drive, using omni wheels in a X-shape pattern, to allow for side-to-side strafing, as well as front-and-back driving." },
+            { "type": "images", "columns": 2, "ratio": "3/4", "items": [
+              { "src": "../projects/bezier_build1.jpg", "caption": "The custom polycarbonate sleds for the dead tracking wheels.", "size": "third" },
+              { "src": "../projects/bezier_build2.jpg", "caption": "The built robot.", "size": "third" }
+            ]}
+          ]
+        },
+        {
+          "heading": "Pure Pursuit",
+          "blocks": [
+            { "type": "text", "text": "Developed a custom C++ Pure Pursuit library for our holonomic drivetrain, allowing the robot to autonomously follow smooth Bézier curves with precision. The Pure Pursuit algorithm works by continuously looking ahead along a planned path, selecting a target point, and adjusting the robot’s movement to steer toward it as it progresses along the curve." },
+            { "type": "images", "columns": 2, "ratio": "16/9", "items": [
+              { "src": "https://youtu.be/IR3y2Ry0Tvw", "caption": "A visual representation of the Pure Pursuit algorithm, showing the robot's current position, the lookahead point, and the path it is following." },
+              { "src": "../projects/bezier_purepursuitdiagram.png", "caption": "A video of the robot following a Bézier curve using the Pure Pursuit algorithm.", "size": "half" }
+
+            ]}
+          ]
+        },
+        {
+          "heading": "Curve Generator",
+          "blocks": [
+            {"type": "text", "text": " To make path creation easier, we also built a JavaScript path planner that lets users click waypoints on the field, automatically generates smooth Bézier curves between them, and exports field-scaled coordinates ready to use in the robot’s autonomous code. Together, these tools made it easier to design, visualize, and execute smooth, efficient, and accurate autonomous movements."},
+            {"type": "image", "src": "../projects/bezier_website.png", "caption": "The Bézier curve generator web application"}
+          ]
+        }
       ],
       "tags": [
-        "Fusion 360", "C++", "PID", "Odometrey"
+        "Fusion 360", "3D Printing", "C++", "Pure Pursuit"
       ],
-      "previewDesc": "Built nine competition robots across four seasons, led a team of seven members, and directed my team to winning a total of 11 awards at the provincial level. Competed as Team 7614A.",
+      "previewDesc": "Designed, built, and programmed a holonomic robot to follow a path using a custom implementation of the Pure Pursuit algorithm. Created a ",
       "images": {
-        "iconImg": ""
+        "iconImg": "../projects/bezier_icon.png",
+        "heroImg": "../projects/bezier_hero.png",
+        "heroCaption": "The CAD of the holonomic robot."
       }
     },{
       "title": "Portfolio Website",
-      "metadata": [
-        ["Timeframe", "October 2026"],
-        ["Role", "Team Captain, Lead Designer & Programmer"]
-      ],
+      "metadata": ["October 2026"],
       "links": [
-        ["Repo", ""]
+        ["Repo", "https://github.com/maxzli08/maxzli.com"]
       ],
-      "tags": [
-        "Fusion 360", "C++", "PID", "Odometrey"
+      "sections":[
+        {
+          "header": "",
+          "blocks":[{"type": "text","text": "Designed and built a responsive portfolio website to showcase my projects, work experience, and skills. In the future, I want to add some photos I've taken from my travels across the world!"}]
+        }
       ],
-      "previewDesc": "Built nine competition robots across four seasons, led a team of seven members, and directed my team to winning a total of 11 awards at the provincial level. Competed as Team 7614A.",
+      "tags": ["HTML/CSS", "JavaScript", "Responsive Design", "Web Development"],
+      "previewDesc": "This website!",
       "images": {
-        "iconImg": ""
+        "iconImg": "../projects/website_icon.png",
+        "heroImg": "../projects/website_hero.png",
+        "heroCaption": "WebsiteCeption"
       }
     }
   ],
   "workExperience": [
-
+    {
+      "role": "Humanoid Mechanical Team Member",
+      "organization": "WATonomous",
+      "timeframe": "Oct 2026-Present",
+      "description": "yogurtiesx",
+      "images": []
+    },
+    {
+      "role": "Events Lead & Technical Logistics Advisor",
+      "organization": "Minds in Motion STEM Inc.",
+      "timeframe": "May 2026-Present",
+      "description": "",
+      "images": []
+    },
+    {
+      "role": "Software Engineering Intern",
+      "organization": "Bridgesystems.net",
+      "timeframe": "Feb 2026-Sept 2026",
+      "description": "",
+      "images": []
+    },
+    {
+      "role": "Senior Coding Instructor & Robotics Coach",
+      "organization": "Code Ninjas",
+      "timeframe": "May 2025-Aug 2026",
+      "description": "",
+      "images": []
+    },
+    {
+      "role": "V5RC Robotics Club President",
+      "organization": "Phoenix Robotics",
+      "timeframe": "Jun 2024 - May 2026",
+      "description": "",
+      "images": []
+    },
+    {
+      "role": "Assistant Teacher",
+      "organization": "Spirit of Math Schools",
+      "timeframe": "Sept 2024 - May 2025",
+      "description": "",
+      "images": []
+    }
   ],
   "gallery": [
     

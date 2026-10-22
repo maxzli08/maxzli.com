@@ -4,12 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Max Li - Portfolio</title>
-<meta name="description" content="Max Li — Mechatronics Engineering, University of Waterloo.">
+<meta name="description" content="Max Li - Mechatronics Engineering, University of Waterloo.">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="layout">
-
     <!-- ============================= SIDEBAR ============================= -->
     <aside class="sidebar">
       <div class="sidebar-inner">
@@ -21,20 +20,20 @@
           <nav class="side-nav">
             <a href="#projects" data-target="projects">Projects</a>
             <a href="#experience" data-target="experience">Work Experience</a>
-            <a href="#gallery" data-target="gallery">Gallery</a>
+            <!-- <a href="#gallery" data-target="gallery">Gallery</a> -->
           </nav>
 
-          <p class="about placeholder">
-            about meeeeee :) (this site is wip)
+          <p class="about">
+            To all recruiters, peers, and random people stalking my Linkedin: welcome to my website! I'm Max, a Mechatronics Engineering student at the University of Waterloo, currently in my 1A term.<br><br>In my free time, I love to make things with my hands and to learn new skills. This website is a collection of my projects, experiences, and interests. Feel free to reach out if you want to connect!
           </p>
         </div>
 
         <div class="sidebar-bottom">
           <div class="contact-list">
-            <a class="tech-link" target="_blank" href="https://github.com/maxzli08">[ GitHub ]</a>
-            <a class="tech-link" target="_blank" href="https://www.linkedin.com/in/maxizli/">[ LinkedIn ]</a>
-            <a class="tech-link" target="_blank" href="#">[ Resume ]</a>
-            <a class="tech-link" target="_blank" href="mailto:maxi.zli640@gmail.com">[ maxi.zli640@gmail.com ]</a>
+            <a class="tech-link" target="_blank" href="https://github.com/maxzli08" data-link="github.com/maxzli08">[ GitHub ]</a>
+            <a class="tech-link" target="_blank" href="https://www.linkedin.com/in/maxizli/" data-link="linkedin.com/in/maxizli">[ LinkedIn ]</a> 
+            <!-- <a class="tech-link" target="_blank" href="#">[ Resume ]</a> -->
+            <a class="tech-link" target="_blank" href="mailto:maxi.zli640@gmail.com" data-link="maxi.zli640@gmail.com">[ Email ]</a> 
           </div>
           <p class="misc placeholder">Waterloo, ON</p>
         </div>
@@ -58,37 +57,8 @@
         <p class="section-eyebrow" data-reveal style="--i:0">jobs & leadership</p>
         <h2 data-reveal style="--i:1">Experience</h2>
 
-        <div class="timeline">
-
-          <article class="timeline-entry" data-reveal style="--i:3">
-            <div class="when placeholder">May 2025-Aug 2026</div>
-            <div class="body">
-              <h3 class="placeholder">Senior Coding Instructor & Robotics Coach</h3>
-              <p class="org placeholder">Code Ninjas</p>
-              <ul>
-                <li class="placeholder">meow</li>
-                <li class="placeholder"></li>
-                <li class="placeholder"></li>
-              </ul>
-            </div>
-          </article>
-
-          <!-- Copy a <article class="timeline-entry"> block above to add more. -->
-
-        </div>
+        <div class="timeline" id="work-experience-timeline"></div>
       </section>
-
-      <!-- ---------- Gallery ---------- -->
-      <!-- <section id="gallery" class="content-section">
-        <p class="section-eyebrow" data-reveal style="--i:0">Gallery</p>
-        <h2 data-reveal style="--i:1">Builds &amp; photos</h2>
-
-        <div class="gallery-grid">
-          <button class="gallery-item" type="button" data-caption="[ Caption ]" data-reveal style="--i:2">
-            <div class="image-frame">[ Image ]</div>
-          </button>
-        </div>
-      </section> -->
 
       <footer class="site-footer">
         <span>Max Li</span>
@@ -106,13 +76,15 @@
   </aside>
 
   <!-- ============================= LIGHTBOX ============================= -->
-  <!-- <dialog id="lightbox" class="lightbox">
-    <button class="modal-close" type="button">✕</button>
-    <button class="lightbox-nav prev" type="button">‹</button>
-    <div class="image-frame lightbox-image">[ Image ]</div>
-    <p class="lightbox-caption placeholder">[ Caption ]</p>
-    <button class="lightbox-nav next" type="button">›</button>
-  </dialog> -->
+  <dialog id="lightbox" class="lightbox" aria-label="Image viewer">
+    <button class="modal-close lightbox-close" type="button" aria-label="Close image">✕</button>
+    <button class="lightbox-nav prev" type="button" aria-label="Previous image" hidden>‹</button>
+    <div class="lightbox-stage">
+      <img class="lightbox-img" alt="">
+      <p class="lightbox-caption" hidden></p>
+    </div>
+    <button class="lightbox-nav next" type="button" aria-label="Next image" hidden>›</button>
+  </dialog>
 
   <script type="module"src="./scripts/content.js" ></script>
 </body>

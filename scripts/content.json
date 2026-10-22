@@ -35,8 +35,8 @@
           "blocks": [
             { "type": "text", "text": "Our team implemented a seven step engineering design process. We applied this process to multiple design cycles per season, resulting in robots iterations that quantifiably improved as the season progressed. I led the documentation of our design cycles in <i><a href='https://heyzine.com/flip-book/08ea3cacf7.html' target='_blank' class='tech-link'>engineering notebooks</a></i>, which led us to winning numerous judged awards." },
             { "type": "images", "columns": 2, "ratio": "16/9", "items": [
-              { "src": "../projects/vex_drawing1.png", "caption": "2025 Provincials Robot and the season's trophies", "size": "half" },
-              { "src": "../projects/vex_drawing2.png", "caption": "2026 Provincials Robot and the season's trophies", "size": "half" }
+              { "src": "../projects/vex_drawing1.png", "caption": "A rough concept sketch used to ideate a solution to the 2025-26 season robot game.", "size": "half" },
+              { "src": "../projects/vex_drawing2.png", "caption": "Another concept sketch, later in the season on a solution made to refine our current robot's design.", "size": "half" }
             ]}
           ]
         },

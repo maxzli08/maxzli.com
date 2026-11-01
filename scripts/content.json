@@ -149,7 +149,7 @@
       "tags": [
         "Fusion 360", "3D Printing", "C++", "Pure Pursuit"
       ],
-      "previewDesc": "Designed, built, and programmed a holonomic robot to follow a path using a custom implementation of the Pure Pursuit algorithm. Created a ",
+      "previewDesc": "Designed, built, and programmed a holonomic robot to follow a path using a custom implementation of the Pure Pursuit algorithm.",
       "images": {
         "iconImg": "../projects/bezier_icon.png",
         "heroImg": "../projects/bezier_hero.png",
